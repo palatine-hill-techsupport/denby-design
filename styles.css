@@ -1,3 +1,7 @@
+/* ===================== 
+General and Index Rules 
+===================== */
+
 /* Reset */
 * {
     margin: 0;
@@ -29,8 +33,7 @@ video {
     z-index: -1;
 }
 
-/* Ensure smooth fading effect */
-.content {
+.home-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -42,8 +45,18 @@ video {
     transition: opacity 0.5s ease-in-out;
 }
 
+.page-content {
+    position: relative;
+    text-align: center;
+    font-size: 1.2rem;
+    max-width: 90%;
+    margin: 100px auto 0;
+    line-height: 1.5;
+    z-index: 2;
+}
+
 /* Hide when scrolling */
-.scrolled .content {
+.scrolled .home-content {
     opacity: 0;
     pointer-events: none;
 }
@@ -148,14 +161,41 @@ p:hover {
     opacity: 0.7;
 }
 
-/* Mobile optimization */
+/* White overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.85;
+    z-index: 0;
+}
+
+/* ===================== 
+Portfolio Rules 
+===================== */
+
+/* ===================== 
+Work With Me Rules 
+===================== */
+
+/* ===================== 
+Blog Rules 
+===================== */
+
+/* ===================== 
+Mobile optimization  
+===================== */
+
 @media (max-width: 768px) {
     body {
         min-height: 100vh;
         padding: 20px;
     }
 
-    .content {
+    .home-content {
         max-width: 100%;
     }
 
@@ -178,12 +218,12 @@ p:hover {
     }
 
     .bio {
-        position: relative; /* Prevents absolute positioning issues */
+        position: relative;
         text-align: center;
         font-size: 1rem;
         max-width: 90%;
-        top: 5%; /* Moves it higher so it doesn't sit too low */
-        transform: translateX(-50%); /* Ensures horizontal centering */
+        top: 5%;
+        transform: translateX(-50%);
 		padding-right: 25px;
 		padding-left: 25px;
         line-height: 1.5;
