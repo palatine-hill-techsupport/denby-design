@@ -167,18 +167,25 @@ p:hover {
     .nav-links {
         display: flex;
         flex-direction: column;
-        align-items: center; 
-        gap: 10px; 
-        margin: 50px 0px 20px 0px;
+        align-items: center;
+        gap: 15px;
+        margin-top: 20px;
+        position: relative;
     }
 
     .nav-links a {
-        font-size: 1.65rem; 
+        font-size: 1.65rem;
     }
 
     .bio {
-        top: 55%;
-        font-size: 0.8rem;
-        line-height: 1.4;
+        position: relative; /* Prevents absolute positioning issues */
+        text-align: center;
+        font-size: 1rem;
+        max-width: 90%;
+        top: 5%; /* Moves it higher so it doesn't sit too low */
+        transform: translateX(-50%); /* Ensures horizontal centering */
+		padding-right: 25px;
+		padding-left: 25px;
+        line-height: 1.5;
     }
 }
