@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Denby.Design - Portfolio</title>
+    <title>Denby.Design - Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lacquer&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
@@ -15,22 +15,55 @@
         <source src="background.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-	<div class="overlay"></div>
-	<div class="portfolio-wrapper">
-		<nav class="nav-links">
-			<a href="index.html">🏠 Home</a>
-			<a href="portfolio.html">📃 Portfolio</a>
-			<a href="work-with-me.html">📃 Work With Me</a>
-			<a href="blog.html">📃 Blog</a>
-		</nav>
-		<!-- Portfolio Content -->
-		<div class="page-content">
-			<p>coming soon</p>
-		</div>
-		<footer class="footer">
-			<p>© Denby Serrao-Arnot</p>
-		</footer>
-	</div>
+    <div class="overlay"></div>
+    <div class="blog-wrapper">
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="work-with-me.html">Work With Me</a>
+            <a href="blog.html">Blog</a>
+        </nav>
+        <div class="page-content">
+            <div class="blog-content">
+                <h1>Blog</h1>
+                <p>Thoughts on UX, digital design, tech trends, and more.</p>
+                <!-- Blog Entry Example -->
+                <article class="blog-post">
+                    <h2>How AI Is Breaking UX Design</h2>
+                    <p class="blog-meta">Published: March 15, 2024 | Category: UX & AI</p>
+                    <p>Companies are rushing to add AI to their products—but is it actually improving the user experience? Let's break down the good, the bad, and the confusing...</p>
+                    <a href="#" class="read-more" data-modal="modal-ai-ux">Read More</a>
+                </article>
+                <!-- Another Blog Entry -->
+                <article class="blog-post">
+                    <h2>The Problem with "Dark Patterns"</h2>
+                    <p class="blog-meta">Published: March 10, 2024 | Category: UX & Ethics</p>
+                    <p>From misleading buttons to sneaky subscriptions, dark patterns trick users into actions they don’t want. Here’s how to spot them and what we can do as designers...</p>
+                    <a href="#" class="read-more" data-modal="modal-dark-patterns">Read More</a>
+                </article>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>© Denby Serrao-Arnot</p>
+        </footer>
+    </div>
+    <!-- Modals -->
+    <div id="modal-ai-ux" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>How AI Is Breaking UX Design</h2>
+            <p class="blog-meta">Published: March 15, 2024 | Category: UX & AI</p>
+            <p>Companies are rushing to add AI to their products—but is it actually improving the user experience? Let's break down the good, the bad, and the confusing...</p>
+        </div>
+    </div>
+    <div id="modal-dark-patterns" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>The Problem with "Dark Patterns"</h2>
+            <p class="blog-meta">Published: March 10, 2024 | Category: UX & Ethics</p>
+            <p>From misleading buttons to sneaky subscriptions, dark patterns trick users into actions they don’t want. Here’s how to spot them and what we can do as designers...</p>
+        </div>
+    </div>
     <script src="scripts.js"></script>
 </body>
 </html>
