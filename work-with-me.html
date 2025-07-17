@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denby.Design - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lacquer&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <video autoplay loop muted playsinline>
+        <source src="images/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+	<div class="overlay"></div>
+	<div class="portfolio-wrapper">
+		<nav class="nav-links">
+			<a href="index.html">Home</a>
+			<a href="portfolio.html">Portfolio</a>
+			<a href="work-with-me.html">Work With Me</a>
+			<!-- <a href="blog.html">Blog</a> -->
+		</nav>
+		<div class="page-content">
+			<div class="work-content">
+				<h1>Work With Me</h1>
+				<h2>I take on freelance consulting, full-time roles, and project collaborations.</h2> 
+				<h2>My process focuses on:</h2>
+				<ul class="process-list">
+					<li><strong>🔍 Audit:</strong> Identifying pain points & usability issues.</li>
+					<li><strong>🎯 Strategy:</strong> Creating a plan based on research & business needs.</li>
+					<li><strong>🎨 Design:</strong> Crafting user-friendly experiences & interfaces.</li>
+					<li><strong>🚀 Implementation:</strong> Working with teams to bring ideas to life.</li>
+				</ul>
+				<h2>Let’s improve your product and make it work for your users.</h2>
+				<div class="contact-links">
+					<a href="https://linkedin.com/in/denby-arnot" target="_blank" class="contact-link">
+						<img src="images/linkedin.png" alt="LinkedIn"> LinkedIn
+					</a>
+					<a href="mailto:hello@denby.design" class="contact-link">
+						<img src="images/email-icon.png" alt="Email"> Email Me
+					</a>
+				</div>
+				<h2>Send an Inquiry</h2>
+				<form action="mailto:hello@denby.design" method="POST" class="contact-form">
+					<label for="reason">Why are you reaching out?</label>
+						<select id="reason" name="reason">
+							<option value="freelance">Freelance UX Work</option>
+							<option value="consulting">UX Consulting</option>
+							<option value="fulltime">Hiring a UX Designer</option>
+							<option value="audit">UX Audit & Heuristic Review</option>
+							<option value="accessibility">Accessibility & Inclusive Design</option>
+							<option value="research">User Research & Testing</option>
+							<option value="strategy">Product Strategy & UX Roadmapping</option>
+							<option value="ai">"We added AI and now our app is unusable."</option>
+							<option value="other">Other</option>
+						</select>
+					<label for="message">Your Message:</label>
+					<textarea id="message" name="message" rows="4"></textarea>
+					<button type="submit">Send Inquiry</button>
+				</form>
+			</div>
+		</div>
+		<footer class="footer">
+			<p>© Denby Serrao-Arnot</p>
+		</footer>
+	</div>
+    <script src="scripts.js"></script>
+</body>
+</html>
