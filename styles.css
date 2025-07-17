@@ -80,7 +80,7 @@ p {
 
 #cta {
     font-family: 'Lacquer', cursive;
-    font-size: 3.0rem;
+    font-size: 2.5rem;
     color: #5f7ce5;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -578,6 +578,18 @@ Mobile optimization
         max-width: 100%;
     }
 
+    h1 {
+        font-size: 3rem;
+    }
+
+    .page-content {
+        margin: 25px auto;
+    }
+
+    .portfolio-content h1 {
+        margin-bottom: 30px;
+    }
+
     video {
         height: 100vh;
         width: 100vw;
@@ -606,6 +618,44 @@ Mobile optimization
 		padding-right: 25px;
 		padding-left: 25px;
         line-height: 1.5;
+    }
+
+    .portfolio-content{
+        margin: 10px auto;
+    }
+
+    .portfolio-item {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+
+    .portfolio-info p {
+        font-size: 0.95rem;
+        word-break: break-word;
+    }
+
+    .portfolio-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .modal-content {
+        max-height: 80vh;
+        overflow-y: auto;
+        margin: 10vh auto;
+        padding: 20px;
+    }
+
+    .modal-content h2 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
     }
 }
 
