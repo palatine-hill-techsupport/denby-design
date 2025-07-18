@@ -21,6 +21,10 @@ body {
     font-family: 'Noto Sans JP', sans-serif;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 /* Background video */
 video {
     position: fixed;
@@ -457,7 +461,10 @@ Blog Rules
     color: #8f64d9;
 }
 
-/* Blog Modal */
+/* ===================== 
+Modal Content 
+===================== */
+
 .modal {
     display: none;
     position: fixed;
@@ -469,11 +476,9 @@ Blog Rules
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
+    overflow-y: auto;      /* enables scrolling when modal is taller than screen */
+    padding: 30px 15px;    /* ensures breathing room on smaller screens */
 }
-
-/* ===================== 
-Modal Content 
-===================== */
 
 .modal-content {
     background: white;
@@ -483,6 +488,9 @@ Modal Content
     border-radius: 8px;
     text-align: left;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;      /* ensures modal doesn't exceed viewport height */
+    overflow-y: auto;      /* makes just the content inside scrollable */
+    scroll-behavior: smooth;
 }
 
 .modal-content p {

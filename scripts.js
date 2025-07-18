@@ -70,3 +70,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Modal background functionality
+document.querySelectorAll('.read-more').forEach(button => {
+  button.addEventListener('click', () => {
+    document.body.classList.add('modal-open');
+  });
+});
+
+document.querySelectorAll('.close-modal').forEach(close => {
+  close.addEventListener('click', () => {
+    document.body.classList.remove('modal-open');
+  });
+});
