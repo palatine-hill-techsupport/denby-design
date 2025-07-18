@@ -58,3 +58,15 @@ docker exec -i mysql_db mysql -u root -proot gamestore < sd_db.sql`;
         });
     }
 });
+
+// Dark mode toggle functionality
+document.addEventListener("DOMContentLoaded", function () {
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    themeToggle.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        themeToggle.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+    });
+});
+
