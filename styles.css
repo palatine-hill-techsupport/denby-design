@@ -696,6 +696,10 @@ Mobile optimization
         margin: 10px auto;
     }
 
+    .portfolio-index a {
+        margin: 0 0px;
+    }
+
     .portfolio-item {
         flex-direction: column;
         align-items: flex-start;
