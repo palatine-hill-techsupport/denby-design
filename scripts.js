@@ -59,14 +59,29 @@ docker exec -i mysql_db mysql -u root -proot gamestore < sd_db.sql`;
     }
 });
 
-// Dark mode toggle functionality
+// Dark mode toggle functionality with localStorage
 document.addEventListener("DOMContentLoaded", function () {
     const themeToggle = document.getElementById("theme-toggle");
     const body = document.body;
 
+    // Check localStorage for dark mode preference
+    if (localStorage.getItem("darkMode") === "enabled") {
+        body.classList.add("dark-mode");
+        themeToggle.textContent = "☀️";
+    } else {
+        themeToggle.textContent = "🌙";
+    }
+
     themeToggle.addEventListener("click", () => {
         body.classList.toggle("dark-mode");
-        themeToggle.textContent = body.classList.contains("dark-mode") ? "☀️" : "🌙";
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("darkMode", "enabled");
+            themeToggle.textContent = "☀️";
+        } else {
+            localStorage.setItem("darkMode", "disabled");
+            themeToggle.textContent = "🌙";
+        }
     });
 });
 
