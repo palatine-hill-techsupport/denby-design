@@ -133,12 +133,16 @@ if (scrollArrow) {
 const rotEl = document.getElementById("rotating-word");
 if (rotEl) {
   const words = [
-    "UX designer",
-    "visual storyteller",
-    "web builder",
-    "interface thinker",
-    "problem solver",
-    "wave-watcher",
+    "a UX designer",
+    "a human-first builder",
+    "a product thinker",
+    "a digital fixer",
+    "a visual storyteller",
+    "a systems thinker",
+    "a friction hunter",
+    "a curious generalist",
+    "a design-led strategist",
+    "a wave-watcher",
   ];
   let wordIdx = 0;
   function rotateWord() {
