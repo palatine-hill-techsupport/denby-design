@@ -853,6 +853,42 @@ nav.site-nav a.active {
 }
 .contact-link:hover { color: #fff; border-color: rgba(242, 212, 194, 0.85); }
 
+.contact-link--icon {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  border-bottom: none;
+  padding: 10px 20px 10px 10px;
+  border-radius: 999px;
+  background: var(--dark-mid);
+  border: 1px solid rgba(166, 149, 134, 0.15);
+  transition: background 0.22s, border-color 0.22s;
+}
+.contact-link--icon:hover {
+  background: rgba(34, 64, 64, 0.9);
+  border-color: rgba(242, 212, 194, 0.2);
+}
+
+.contact-link--icon span {
+  font-family: 'Averia', Georgia, serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  color: var(--light-mid);
+  transition: color 0.22s;
+}
+.contact-link--icon:hover span { color: var(--cream); }
+
+.contact-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+.contact-icon--hover { display: none; }
+.contact-link--icon:hover .contact-icon--default { display: none; }
+.contact-link--icon:hover .contact-icon--hover { display: block; }
+
 .contact-form {
   display: flex;
   flex-direction: column;
