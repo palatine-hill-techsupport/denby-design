@@ -128,6 +128,28 @@ if (scrollArrow) {
   });
 }
 
+// ── Rotating headline (homepage only) ───────────────────────────
+const headlineEl = document.getElementById("rotating-headline");
+if (headlineEl) {
+  const headlines = [
+    "Because \u201cgood enough\u201d usually isn\u2019t.",
+    "For products people have to live with.",
+    "Less busywork. Better products.",
+  ];
+  let headlineIdx = 0;
+  function rotateHeadline() {
+    headlineEl.style.opacity = "0";
+    headlineEl.style.transform = "translateY(-8px)";
+    setTimeout(() => {
+      headlineIdx = (headlineIdx + 1) % headlines.length;
+      headlineEl.textContent = headlines[headlineIdx];
+      headlineEl.style.opacity = "1";
+      headlineEl.style.transform = "translateY(0)";
+    }, 350);
+  }
+  setInterval(rotateHeadline, 4500);
+}
+
 // ── Rotating tagline (homepage only) ────────────────────────────
 const rotEl = document.getElementById("rotating-word");
 if (rotEl) {
