@@ -746,6 +746,10 @@ nav.site-nav a.active {
   gap: 28px;
   transition: transform 0.24s ease, box-shadow 0.24s ease;
 }
+.blog-preview-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.55);
+}
 
 .blog-preview-card--featured {
   grid-row: span 2;
