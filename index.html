@@ -1,42 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>denby.design - Home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lacquer&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>denby.design</title>
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="site.css">
 </head>
 <body>
-    <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-    <video autoplay loop muted playsinline>
-        <source src="images/background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-    <div class="home-content">
-        <h1>denby.design</h1>
-        <p>"Your users called, they want their app back."</p>
+
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="images/background.mp4" type="video/mp4">
+  </video>
+  <pre id="ascii" aria-hidden="true"></pre>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content">
+      <img src="images/logo.svg" class="logo" alt="denby.design logo mark">
+      <h1 class="wordmark">denby.design</h1>
+      <p class="tagline">I'm a <span id="rotating-word">UX designer</span></p>
     </div>
-	<!-- Parallax Scroll Div -->
-	<div class="parallax-window">
-		<nav class="nav-links">
-			<a href="portfolio.html">Portfolio</a>
-			<a href="work-with-me.html">Work With Me</a>
-			<!-- <a href="blog.html">Blog</a> -->
-		</nav>
-		<!-- Home Content -->
-		<div class="bio">
-			<p><b>I’m Denby, a UX and web designer who helps digital products feel human again.</b> I specialise in crafting intuitive, user-first experiences that align with real people; not just frameworks and roadmaps. Whether it's a UX audit, a creative overhaul, or a fresh build from scratch, I help brands rediscover what their users actually want.</p>
-            <a href="portfolio.html"><h1 id="cta">Click here to check out my work</h1></a>
+    <a class="scroll-arrow" href="#main" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </section>
+
+  <!-- ── MAIN ── -->
+  <div class="main-content" id="main">
+
+    <nav class="site-nav">
+      <img src="images/logo.svg" class="nav-logo" alt="">
+      <a href="index.html" class="active">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="work-with-me.html">Work With Me</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+
+    <section class="intro-section">
+      <h2>Design for people.<br>Let AI handle the grunt work.</h2>
+      <p>I'm Denby, a UX designer who got into this field with a pretty simple belief: digital products should serve people first. Not shareholders, not trends, and not whatever metric is fashionable this quarter.</p>
+      <p>That belief matters even more now. AI is reshaping how products are imagined, built, and shipped, and for once, that shift can genuinely favour better design. The low-level busywork, repetitive discovery tasks, prototype churn, and endless admin no longer need to swallow the whole process. What's left is the part that always mattered most: understanding real people, solving the right problems, and building things that are useful, accessible, and worth using.</p>
+      <p>I want to help teams make the most of that shift. Not just to move faster, but to work better. To bring UX into every sprint, support design-led development from idea to iteration, and create products that work for more people, including the ones digital teams have too often left behind. The best ideas should not be saved for hackathons. With the right use of AI, they can become part of how teams build every day.</p>
+      <a class="text-link" href="portfolio.html">See my work &rarr;</a>
+    </section>
+
+    <section class="projects-section">
+      <div class="projects-section-header">
+        <span class="section-label">Featured Work</span>
+        <a class="text-link" href="portfolio.html">All projects &rarr;</a>
+      </div>
+
+      <div class="projects-featured-stack">
+
+        <a class="project-card project-card--hero" href="portfolio.html#modal-eel-festival">
+          <img src="images/folio/eel2.jpg" alt="Elektrik-Eel-Festival">
+          <div class="project-card-body">
+            <span class="project-tag">Web &middot; Frontend</span>
+            <h3>Elektrik-Eel-Festival</h3>
+            <p>A responsive music festival site built from a single AI-extrapolated image, the resulting red haze became the defining visual of the entire experience.</p>
+            <span class="project-card-cta">View project &rarr;</span>
+          </div>
+        </a>
+
+        <a class="project-card project-card--hero" href="portfolio.html#modal-the-way-of-zen">
+          <img src="images/folio/woz2.jpg" alt="The Way of Zen">
+          <div class="project-card-body">
+            <span class="project-tag">Web &middot; Interaction</span>
+            <h3>The Way of Zen</h3>
+            <p>Physical sculpture meets synthwave dreamscape, a hand-built model animated through the web, scored with lofi and Alan Watts poetry.</p>
+            <span class="project-card-cta">View project &rarr;</span>
+          </div>
+        </a>
+
+        <a class="project-card project-card--hero" href="portfolio.html#modal-foundations">
+          <img src="images/folio/foe2.jpg" alt="Foundations of Existence">
+          <div class="project-card-body">
+            <span class="project-tag">Web &middot; Interaction</span>
+            <h3>Foundations of Existence</h3>
+            <p>Paper sculpture and web design merge to explore creation and materiality, James Webb imagery brought to life through CSS and JavaScript animation.</p>
+            <span class="project-card-cta">View project &rarr;</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- Blog preview -->
+    <section class="blog-preview-section">
+      <div class="blog-preview-header">
+        <span class="section-label">Latest Writing</span>
+        <a class="text-link" href="blog.html">All posts &rarr;</a>
+      </div>
+      <div class="blog-preview-grid">
+        <div class="blog-preview-card blog-preview-card--featured blog-preview-card--soon">
+          <span class="blog-preview-meta">Coming soon™</span>
+          <h3>Test post, please ignore</h3>
         </div>
-		<footer class="footer">
-			<p>© Denby Serrao-Arnot</p>
-		</footer>
-	</div>
-    <div class="spacer"></div><!-- Spacer Div-->
-    <script src="scripts.js"></script>
+        <div class="blog-preview-card blog-preview-card--soon">
+          <span class="blog-preview-meta">Coming soon™</span>
+          <h3>Lorem ipsum dolor sit, UX edition</h3>
+        </div>
+        <div class="blog-preview-card blog-preview-card--soon">
+          <span class="blog-preview-meta">Coming soon™</span>
+          <h3>This one's still in my head, bear with me</h3>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>&copy; Denby Serrao-Arnot</p>
+      <div class="footer-links">
+        <a href="mailto:hello@denby.design">hello@denby.design</a>
+        <a href="https://linkedin.com/in/denby-arnot" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="site.js"></script>
 </body>
 </html>
