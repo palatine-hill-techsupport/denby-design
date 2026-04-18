@@ -148,6 +148,7 @@ nav.site-nav a {
   color: var(--light-mid);
   text-decoration: none;
   transition: color 0.22s;
+  text-align: center;
 }
 
 nav.site-nav a:hover,
