@@ -105,9 +105,8 @@ window.addEventListener("resize", measureGrid);
 window.addEventListener("orientationchange", measureGrid);
 window.addEventListener("mousemove", onPointerMove, { passive: true });
 window.addEventListener("touchmove", e => {
-  if (e.cancelable) e.preventDefault();
   if (e.touches[0]) onPointerMove(e.touches[0]);
-}, { passive: false });
+}, { passive: true });
 window.addEventListener("touchstart", e => {
   if (e.touches[0]) onPointerMove(e.touches[0]);
 }, { passive: true });
