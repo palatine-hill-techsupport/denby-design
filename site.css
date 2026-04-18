@@ -788,6 +788,15 @@ nav.site-nav a.active {
 }
 
 /* ── Work With Me ───────────────────────────────────────────────── */
+.wwm-intro {
+  font-family: 'Averia', Georgia, serif;
+  font-weight: 300;
+  font-size: 1.05rem;
+  color: var(--light-mid);
+  line-height: 1.72;
+  margin-bottom: 40px;
+}
+
 .wwm-section {
   max-width: 720px;
   margin: 0 auto;
