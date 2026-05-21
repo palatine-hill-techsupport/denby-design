@@ -34,8 +34,12 @@
 
       <div class="blog-section">
         <div class="blog-tools" aria-label="Blog filters">
-          <label class="blog-search-label" for="blog-search">Find a post</label>
-          <input id="blog-search" class="blog-search" type="search" placeholder="Search writing..." autocomplete="off">
+          <div class="blog-tools-heading">
+            <a class="blog-rss-link" href="rss.xml" type="application/rss+xml" aria-label="RSS feed">
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <input id="blog-search" class="blog-search" type="search" placeholder="Search posts..." autocomplete="off" aria-label="Search posts">
         </div>
 
         <div class="blog-archive-grid" id="blog-archive">

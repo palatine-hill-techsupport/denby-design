@@ -983,13 +983,43 @@ nav.site-nav a.active {
   margin-bottom: 22px;
 }
 
-.blog-search-label {
-  font-family: 'Averia', Georgia, serif;
-  font-weight: 400;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid);
+.blog-tools-heading {
+  display: flex;
+  align-items: center;
+}
+
+.blog-rss-link {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: 1px solid rgba(166, 149, 134, 0.2);
+  border-radius: 50%;
+  background: rgba(34, 64, 64, 0.36);
+  transition: background 0.22s, border-color 0.22s, transform 0.22s;
+}
+
+.blog-rss-link span {
+  width: 14px;
+  height: 14px;
+  display: block;
+  background: var(--light-mid);
+  mask: url('images/rss.svg') center / contain no-repeat;
+  -webkit-mask: url('images/rss.svg') center / contain no-repeat;
+  transition: background 0.22s, transform 0.22s;
+}
+
+.blog-rss-link:hover {
+  background: rgba(242, 212, 194, 0.1);
+  border-color: rgba(242, 212, 194, 0.38);
+  transform: translateY(-1px);
+}
+
+.blog-rss-link:hover span {
+  background: var(--cream);
+  transform: rotate(-8deg) scale(1.08);
 }
 
 .blog-search {
