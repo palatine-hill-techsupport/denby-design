@@ -247,4 +247,29 @@ document.addEventListener("DOMContentLoaded", () => {
       }).catch(() => { dockerBtn.textContent = "Error"; });
     });
   }
+
+  // Blog archive search
+  const blogSearch = document.getElementById("blog-search");
+  const blogCards = Array.from(document.querySelectorAll(".blog-archive-card"));
+  const blogEmpty = document.getElementById("blog-empty");
+  if (blogSearch && blogCards.length) {
+    blogSearch.addEventListener("input", () => {
+      const query = blogSearch.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      blogCards.forEach(card => {
+        const haystack = [
+          card.dataset.title,
+          card.dataset.category,
+          card.dataset.excerpt,
+          card.textContent
+        ].join(" ").toLowerCase();
+        const isVisible = haystack.includes(query);
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      if (blogEmpty) blogEmpty.hidden = visibleCount > 0;
+    });
+  }
 });

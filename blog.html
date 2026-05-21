@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>denby.design · Blog</title>
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="denby.design Blog" href="rss.xml">
   <link rel="stylesheet" href="site.css">
 </head>
 <body>
@@ -26,16 +27,27 @@
 
     <div class="page-header">
       <h1>Blog</h1>
-      <p>Thoughts on UX, digital design, tech trends, and more.</p>
+      <p>Thoughts on UX, digital design, tech trends, and the odd shovel hunt.</p>
     </div>
 
     <div class="page-content-area">
 
       <div class="blog-section">
-        <div class="coming-soon">
-          <h2>Something's brewing.</h2>
-          <p>Posts are on their way. Check back soon.</p>
+        <div class="blog-tools" aria-label="Blog filters">
+          <label class="blog-search-label" for="blog-search">Find a post</label>
+          <input id="blog-search" class="blog-search" type="search" placeholder="Search writing..." autocomplete="off">
         </div>
+
+        <div class="blog-archive-grid" id="blog-archive">
+          <a class="blog-archive-card" href="posts/the-road-to-ai-dorado.html" data-title="The Road to AI Dorado" data-category="Design AI" data-excerpt="Prompt-to-UI, design-to-code, MCP, Figma Make, and why the real prize might be a code-native design canvas where the product is already alive.">
+            <span class="blog-preview-meta">Design &amp; AI &middot; 21 May 2026</span>
+            <h2>The Road to AI Dorado</h2>
+            <p>Prompt-to-UI, design-to-code, MCP, Figma Make, and why the real prize might be a code-native design canvas where the product is already alive.</p>
+            <span class="project-card-cta">Read post &rarr;</span>
+          </a>
+        </div>
+
+        <p class="blog-empty" id="blog-empty" hidden>No posts found. Try a broader search.</p>
       </div>
 
       <footer class="site-footer">
