@@ -155,14 +155,14 @@ const rotEl = document.getElementById("rotating-word");
 if (rotEl) {
   const words = [
     "a UX designer",
-    "a human-first builder",
-    "a product thinker",
     "a digital fixer",
-    "a visual storyteller",
-    "a systems thinker",
-    "a friction hunter",
+    "a systems untangler",
+    "a product-minded designer",
+    "a prototype builder",
+    "a friction finder",
     "a curious generalist",
-    "a design-led strategist",
+    "a design systems nerd",
+    "a practical problem-solver",
     "a wave-watcher",
   ];
   let wordIdx = 0;
