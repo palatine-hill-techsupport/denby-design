@@ -308,18 +308,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Docker clipboard (portfolio page)
-  const dockerBtn = document.getElementById("copy-docker-code");
-  if (dockerBtn) {
-    dockerBtn.addEventListener("click", () => {
-      const cmd = `git clone https://github.com/palatine-hill-techsupport/STACKED-DECK.git\ncd STACKED-DECK\ndocker-compose up -d\ndocker exec -i mysql_db mysql -u root -proot gamestore < sd_db.sql`;
-      navigator.clipboard.writeText(cmd).then(() => {
-        dockerBtn.textContent = "Copied!";
-        setTimeout(() => { dockerBtn.textContent = "Copy Docker Setup"; }, 2000);
-      }).catch(() => { dockerBtn.textContent = "Error"; });
-    });
-  }
-
   // Blog archive search
   const blogSearch = document.getElementById("blog-search");
   const blogCards = Array.from(document.querySelectorAll(".blog-archive-card"));
