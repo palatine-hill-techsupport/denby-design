@@ -253,7 +253,7 @@ if (rotEl) {
 
 // ── Modal system ─────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
-  // Auto-open modal from URL hash (e.g. portfolio.html#modal-shoutstack)
+  // Auto-open modal from URL hash (e.g. portfolio.html#modal-still-good)
   if (window.location.hash) {
     const target = document.querySelector(window.location.hash);
     if (target && target.classList.contains("modal")) {
