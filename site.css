@@ -553,7 +553,7 @@ nav.site-nav a.active {
 }
 
 .intro-section {
-  max-width: 660px;
+  max-width: 780px;
   margin: 80px auto 64px;
   padding: 0 28px;
   text-align: center;
@@ -574,11 +574,11 @@ nav.site-nav a.active {
   font-weight: 300;
   font-size: 1.05rem;
   color: var(--light-mid);
-  line-height: 1.72;
+  line-height: 1.64;
 }
 
 .intro-section p + p {
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .intro-section .text-link { margin-top: 30px; display: inline-block; }
