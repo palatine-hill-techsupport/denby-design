@@ -128,11 +128,83 @@ if (scrollArrow) {
   });
 }
 
+const hero = document.querySelector('.hero');
+const main = document.getElementById('main');
+if (hero && main) {
+  const snapMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let isSnapping = false;
+  let snapLockTimer;
+  let touchStartY = null;
+
+  function getMainTop() {
+    return main.offsetTop;
+  }
+
+  function snapToY(top) {
+    clearTimeout(snapLockTimer);
+    isSnapping = true;
+    window.scrollTo({
+      top,
+      behavior: snapMotion.matches ? 'auto' : 'smooth'
+    });
+    snapLockTimer = setTimeout(() => {
+      isSnapping = false;
+    }, snapMotion.matches ? 80 : 760);
+  }
+
+  function maybeSnapBetweenHeroAndMain(direction) {
+    if (document.body.classList.contains('modal-open')) return false;
+    if (isSnapping) return true;
+
+    const y = window.scrollY;
+    const mainTop = getMainTop();
+    const boundarySlack = 24;
+
+    if (direction > 0 && y < mainTop - boundarySlack) {
+      snapToY(mainTop);
+      return true;
+    }
+
+    if (direction < 0 && y <= mainTop + boundarySlack) {
+      snapToY(0);
+      return true;
+    }
+
+    return false;
+  }
+
+  window.addEventListener('wheel', e => {
+    if (maybeSnapBetweenHeroAndMain(e.deltaY)) e.preventDefault();
+  }, { passive: false });
+
+  window.addEventListener('touchstart', e => {
+    touchStartY = e.touches[0] ? e.touches[0].clientY : null;
+  }, { passive: true });
+
+  window.addEventListener('touchmove', e => {
+    if (touchStartY === null || !e.touches[0]) return;
+    const deltaY = touchStartY - e.touches[0].clientY;
+    if (Math.abs(deltaY) < 18) return;
+    if (maybeSnapBetweenHeroAndMain(deltaY)) e.preventDefault();
+    touchStartY = null;
+  }, { passive: false });
+
+  window.addEventListener('keydown', e => {
+    const scrollDownKeys = ['ArrowDown', 'PageDown', ' '];
+    const scrollUpKeys = ['ArrowUp', 'PageUp'];
+    const direction = scrollDownKeys.includes(e.key) ? 1 : scrollUpKeys.includes(e.key) ? -1 : 0;
+
+    if (direction && maybeSnapBetweenHeroAndMain(direction)) {
+      e.preventDefault();
+    }
+  });
+}
+
 // ── Rotating headline (homepage only) ───────────────────────────
 const headlineEl = document.getElementById("rotating-headline");
 if (headlineEl) {
   const headlines = [
-    "Because \u201cgood enough\u201d<br>usually isn\u2019t.",
+    "Because \u201cgood enough\u201d<br>sometimes isn\u2019t.",
     "For products people<br>have to live with.",
     "Less busywork.<br>Better products.",
   ];
