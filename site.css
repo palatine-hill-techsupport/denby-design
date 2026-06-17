@@ -294,6 +294,11 @@ nav.site-nav a.active {
   display: block;
 }
 
+.portfolio-card img.portfolio-card-image--contain {
+  object-fit: contain;
+  background: #020505;
+}
+
 .portfolio-card-body {
   padding: 20px;
   display: flex;
@@ -372,6 +377,11 @@ nav.site-nav a.active {
   display: block;
 }
 
+.modal-content img.modal-image--contain {
+  object-fit: contain;
+  background: #020505;
+}
+
 .modal-content p {
   font-family: 'Averia', Georgia, serif;
   font-weight: 300;
@@ -387,6 +397,19 @@ nav.site-nav a.active {
 }
 
 .modal-content em { font-style: italic; }
+
+.modal-content p a {
+  color: var(--cream);
+  text-decoration-color: var(--mid);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color 0.22s, text-decoration-color 0.22s;
+}
+
+.modal-content p a:hover {
+  color: var(--light);
+  text-decoration-color: var(--cream);
+}
 
 .close-modal {
   position: absolute;
