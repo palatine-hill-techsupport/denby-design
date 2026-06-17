@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1217 828" role="img" aria-labelledby="title desc">
+  <title id="title">JB Retro-Fi project screenshot</title>
+  <desc id="desc">A late nineties JB Hi-Fi inspired webpage with a dark CRT scanline texture, yellow logo, side navigation, and special thanks credit.</desc>
+  <defs>
+    <pattern id="scan" width="8" height="4" patternUnits="userSpaceOnUse">
+      <rect width="8" height="4" fill="#020505"/>
+      <rect y="1" width="8" height="1" fill="#0d1514" opacity=".8"/>
+      <rect x="1" width="1" height="4" fill="#101010" opacity=".35"/>
+    </pattern>
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation=".35"/>
+    </filter>
+  </defs>
+  <rect width="1217" height="828" fill="#020505"/>
+  <rect width="1217" height="828" fill="url(#scan)" opacity=".95"/>
+  <rect x="8" y="6" width="140" height="518" fill="#20232d" stroke="#9ba0ad" stroke-width="2" opacity=".92"/>
+  <g font-family="Georgia, serif" font-size="12" font-style="italic" font-weight="700" fill="#fff" text-anchor="middle">
+    <g fill="#f2ff00"><rect x="20" y="16" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="35">Dept.</text></g>
+    <g><rect x="82" y="16" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/></g>
+    <g><rect x="20" y="53" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="72">New JB</text></g>
+    <g><rect x="82" y="53" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="72">TVs</text></g>
+    <g><rect x="20" y="90" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="109">Audio</text></g>
+    <g><rect x="82" y="90" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="109">Comput.</text></g>
+    <g><rect x="20" y="127" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="146">PC Parts</text></g>
+    <g><rect x="82" y="127" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="146">Gaming</text></g>
+    <g><rect x="20" y="164" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="183">Mobile</text></g>
+    <g><rect x="82" y="164" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="178">Movies +</text><text x="110" y="190">TV</text></g>
+    <g><rect x="20" y="201" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="220">Music</text></g>
+    <g><rect x="82" y="201" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="220">Applian.</text></g>
+    <g><rect x="20" y="238" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="250">Smart</text><text x="47" y="262">Home</text></g>
+    <g><rect x="82" y="238" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="257">Collect.</text></g>
+    <g><rect x="20" y="275" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="287">Office</text><text x="47" y="299">Tech</text></g>
+    <g><rect x="82" y="275" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="287">Extra</text><text x="110" y="299">Care</text></g>
+    <g><rect x="20" y="329" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="348">Trade In</text></g>
+    <g><rect x="82" y="329" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="341">Mobile</text><text x="110" y="353">Srv</text></g>
+    <g><rect x="20" y="366" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="47" y="385">Installs</text></g>
+    <g><rect x="82" y="366" width="55" height="28" fill="#1d1e27" stroke="#8a8e9c"/><text x="110" y="385">Stores</text></g>
+  </g>
+  <rect x="31" y="421" width="95" height="48" fill="#171819" stroke="#c7c8d2"/>
+  <text x="78" y="449" font-family="Arial Black, Impact, sans-serif" font-size="28" font-weight="900" fill="#f2ff00" text-anchor="middle">JB</text>
+  <text x="78" y="461" font-family="Arial Black, Impact, sans-serif" font-size="13" font-weight="900" fill="#f2ff00" text-anchor="middle">HI-FI</text>
+  <rect x="38" y="479" width="80" height="18" fill="#171819" stroke="#c7c8d2"/>
+  <text x="78" y="493" font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="13" fill="#f2ff00" text-anchor="middle">CRT On</text>
+  <g filter="url(#glow)" fill="#eaff00" font-family="Arial Black, Impact, sans-serif" font-weight="900" text-anchor="middle">
+    <path d="M574 88h-22c-9 0-17 8-17 17v63c0 9 8 17 17 17h22M845 88h15c9 0 17 8 17 17v63c0 9-8 17-17 17h-15" fill="none" stroke="#eaff00" stroke-width="5"/>
+    <text x="705" y="134" font-size="136">JB</text>
+    <text x="705" y="215" font-size="76">HI-FI</text>
+  </g>
+  <rect x="510" y="262" width="392" height="29" rx="3" fill="#121616" stroke="#7c8789"/>
+  <g font-family="Georgia, serif" font-style="italic" font-weight="700" font-size="18" fill="#f2ff00" text-anchor="middle"><text x="543" y="282">Charts</text><text x="710" y="282">Album of the week</text><text x="868" y="282">News</text></g>
+  <g font-family="Georgia, serif" filter="url(#soft)">
+    <text x="710" y="341" font-size="32" font-weight="700" fill="#f2ff00" text-anchor="middle">Welcome To JB Hi-Fi</text>
+    <text x="218" y="375" font-size="16" font-weight="700" fill="#fff">Established in 1975, JB Hi-Fi began as a retailer in East Keilor, Victoria, Australia with one simple philosophy: to deliver a specialist range of hi-fi and</text>
+    <text x="218" y="394" font-size="16" font-weight="700" fill="#fff">recorded music at Australia's lowest prices.</text>
+    <text x="218" y="427" font-size="16" font-weight="700" fill="#fff">Now, maintaining this philosophy, JB is Australia's leading independent retailer of home entertainment and recorded music. This retro microsite rebuilds the</text>
+    <text x="218" y="446" font-size="16" font-weight="700" fill="#fff">late-90s vibe with scanlines, chunky navigation, theatrical product departments, and gloriously loud yellow type.</text>
+    <text x="710" y="543" font-size="25" font-weight="700" fill="#f2ff00" text-anchor="middle">JB, You've done it again!</text>
+    <text x="218" y="578" font-size="16" font-weight="700" fill="#fff">Please Note: this portfolio project is a loving retro web experiment inspired by the original JB Hi-Fi online era.</text>
+    <text x="218" y="628" font-size="16" font-weight="700" fill="#fff">Special thanks to Finbar O'Hanlon for the original web design inspiration that helped shape this tribute.</text>
+    <text x="710" y="685" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">Copyright 1999 JB Hi Fi</text>
+    <text x="745" y="718" font-size="14" font-style="italic" fill="#a8a8b0" text-anchor="middle">Web Design</text>
+    <text x="745" y="735" font-size="14" font-style="italic" fill="#a8a8b0" text-anchor="middle">By</text>
+    <text x="745" y="752" font-size="16" font-style="italic" fill="#a8a8b0" text-anchor="middle">Finbar O'Hanlon</text>
+    <text x="710" y="796" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">For Best Viewing set screen to 800 x 600 and use a 4.0 or later browser</text>
+  </g>
+</svg>
