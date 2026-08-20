@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>denby.design Blog</title>
     <link>https://denby.design/blog.html</link>
+    <atom:link href="https://denby.design/rss.xml" rel="self" type="application/rss+xml" />
     <description>Thoughts on UX, digital design, tech trends, and more from Denby Serrao-Arnot.</description>
     <language>en-au</language>
     <lastBuildDate>Thu, 20 Aug 2026 00:00:00 +1000</lastBuildDate>

@@ -1,0 +1,15 @@
+# Operating-system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local tooling
+.codex-tmp/
+*.log
+__pycache__/
