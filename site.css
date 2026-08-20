@@ -6,26 +6,31 @@
 @font-face {
   font-family: 'Averia';
   src: url('fonts/AveriaSerifLibre-Light.ttf') format('truetype');
+  font-display: swap;
   font-weight: 300; font-style: normal;
 }
 @font-face {
   font-family: 'Averia';
   src: url('fonts/AveriaSerifLibre-LightItalic.ttf') format('truetype');
+  font-display: swap;
   font-weight: 300; font-style: italic;
 }
 @font-face {
   font-family: 'Averia';
   src: url('fonts/AveriaSerifLibre-Regular.ttf') format('truetype');
+  font-display: swap;
   font-weight: 400; font-style: normal;
 }
 @font-face {
   font-family: 'Averia';
   src: url('fonts/AveriaSerifLibre-Italic.ttf') format('truetype');
+  font-display: swap;
   font-weight: 400; font-style: italic;
 }
 @font-face {
   font-family: 'Averia';
   src: url('fonts/AveriaSerifLibre-Bold.ttf') format('truetype');
+  font-display: swap;
   font-weight: 700; font-style: normal;
 }
 
@@ -271,6 +276,8 @@ nav.site-nav a.active {
 
 .portfolio-card {
   background: var(--dark-mid);
+  color: inherit;
+  text-decoration: none;
   border-radius: 10px;
   overflow: hidden;
   display: flex;
@@ -292,11 +299,6 @@ nav.site-nav a.active {
   height: 180px;
   object-fit: cover;
   display: block;
-}
-
-.portfolio-card img.portfolio-card-image--contain {
-  object-fit: contain;
-  background: #020505;
 }
 
 .portfolio-card-body {
@@ -377,11 +379,6 @@ nav.site-nav a.active {
   display: block;
 }
 
-.modal-content img.modal-image--contain {
-  object-fit: contain;
-  background: #020505;
-}
-
 .modal-content p {
   font-family: 'Averia', Georgia, serif;
   font-weight: 300;
@@ -407,7 +404,7 @@ nav.site-nav a.active {
 }
 
 .modal-content p a:hover {
-  color: var(--light);
+  color: #fff;
   text-decoration-color: var(--cream);
 }
 
@@ -448,7 +445,6 @@ nav.site-nav a.active {
 
 .cta-demo     { background: var(--cream); }
 .cta-github   { background: var(--light-mid); }
-.cta-video    { background: #c9897a; }
 .cta-figma    { background: #9a8fb5; }
 .cta-download { background: #7a9e8a; color: #fff; }
 
@@ -621,12 +617,6 @@ nav.site-nav a.active {
 
 .projects-section-header .section-label {
   margin-bottom: 0;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 22px;
 }
 
 .projects-featured-stack {
@@ -816,7 +806,7 @@ nav.site-nav a.active {
   max-width: 52ch;
 }
 
-.blog-preview-card--soon h3 {
+.blog-preview-card:not(.blog-preview-card--featured) h3 {
   opacity: 0.72;
 }
 
@@ -1218,27 +1208,6 @@ nav.site-nav a.active {
   margin-bottom: 0;
 }
 
-.coming-soon {
-  text-align: center;
-  padding: 80px 0;
-}
-
-.coming-soon h2 {
-  font-family: 'Averia', Georgia, serif;
-  font-weight: 300;
-  font-style: italic;
-  font-size: 1.8rem;
-  color: var(--light-mid);
-  margin-bottom: 12px;
-}
-
-.coming-soon p {
-  font-family: 'Averia', Georgia, serif;
-  font-weight: 300;
-  font-size: 0.97rem;
-  color: var(--mid);
-}
-
 /* ── Responsive ─────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   .portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1258,11 +1227,6 @@ nav.site-nav a.active {
   .project-card--hero img { height: 220px; }
   .project-card--hero .project-card-body { padding: 24px 20px; }
 
-  .blog-preview-item {
-    grid-template-columns: 1fr;
-    gap: 6px;
-  }
-
   .blog-section { padding: 32px 20px 56px; }
 
   .blog-tools {
@@ -1278,8 +1242,6 @@ nav.site-nav a.active {
     padding: 28px 20px 34px;
     border-radius: 8px;
   }
-
-  .projects-grid { grid-template-columns: 1fr; }
 
   .intro-section { margin: 48px auto 40px; }
 
