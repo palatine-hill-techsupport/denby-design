@@ -8,29 +8,32 @@
   <link rel="alternate" type="application/rss+xml" title="denby.design Blog" href="../rss.xml">
   <link rel="stylesheet" href="../site.css">
 </head>
-<body>
+<body data-page="blog">
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <video id="bg-video" autoplay muted loop playsinline preload="metadata" poster="../images/background-poster.jpg">
+  <video class="site-background" autoplay muted loop playsinline preload="metadata" poster="../images/background-poster.jpg">
     <source src="../images/background.mp4?v=pingpong-1" type="video/mp4">
   </video>
-  <pre id="ascii" aria-hidden="true"></pre>
+  <div class="site-scrim" aria-hidden="true"></div>
 
   <div class="page-wrapper">
 
-    <nav class="site-nav">
-      <img src="../images/logo.svg" class="nav-logo" alt="">
-      <a href="../index.html">Home</a>
-      <a href="../portfolio.html">Portfolio</a>
-      <a href="../work-with-me.html">Work With Me</a>
-      <a href="../blog.html" class="active" aria-current="page">Blog</a>
-    </nav>
+    <header class="site-nav">
+      <nav class="nav-inner" aria-label="Primary">
+        <a class="brand" href="../index.html" aria-label="denby.design home"><img src="../images/logo.svg" alt=""><span>denby.design</span></a>
+        <div class="desktop-nav">
+          <a href="../index.html">Home</a><a href="../portfolio.html">Portfolio</a><a href="../work-with-me.html">Work With Me</a><a href="../blog.html" aria-current="page">Blog</a><a class="button nav-cta" href="../work-with-me.html">Let’s talk</a>
+        </div>
+        <button class="button button-secondary menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">Menu</button>
+      </nav>
+    </header>
 
     <div class="page-header">
       <h1>Blog</h1>
       <p>Thoughts on UX, digital design, tech trends, and the odd shovel hunt.</p>
     </div>
 
-    <div class="page-content-area">
+    <main class="page-content-area" id="main">
 
       <div class="blog-section">
         <a class="text-link blog-back-link" href="../blog.html">&larr; All posts</a>
@@ -82,15 +85,16 @@
         </article>
       </div>
 
+    </main>
+
       <footer class="site-footer">
         <p>&copy; Denby Serrao-Arnot</p>
         <div class="footer-links">
           <a href="mailto:hello@denby.design">hello@denby.design</a>
-          <a href="https://linkedin.com/in/denby-arnot" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/denby-sa" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </footer>
 
-    </div>
   </div>
 
   <script src="../site.js"></script>

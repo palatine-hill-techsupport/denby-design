@@ -18,6 +18,7 @@ Then open <http://127.0.0.1:8765/>.
 
 - `index.html` — homepage and latest writing
 - `portfolio.html` — project grid and modals
+- `taixu.html` and `amped.html` — featured case studies
 - `work-with-me.html` — services and contact form
 - `blog.html` — searchable post archive
 - `posts/` — individual articles
@@ -35,7 +36,7 @@ neither turnaround repeats an endpoint frame. The cycle is approximately
 
 The reverse section is encoded into the MP4; no JavaScript seeking or negative
 playback rate is needed. The MP4 metadata is placed before the video data for
-progressive loading. All seven pages use the same version query on the source
+progressive loading. All site pages use the same version query on the source
 URL; update it together when replacing this asset so visitors fetch the new clip.
 Use the original footage from Git history for future edits, rather than reversing
 the already combined cycle again.

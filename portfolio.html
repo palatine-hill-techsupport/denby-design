@@ -8,35 +8,74 @@
   <link rel="alternate" type="application/rss+xml" title="denby.design Blog" href="rss.xml">
   <link rel="stylesheet" href="site.css">
 </head>
-<body>
-
-  <video id="bg-video" autoplay muted loop playsinline preload="metadata" poster="images/background-poster.jpg">
+<body data-page="portfolio">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <video class="site-background" autoplay muted loop playsinline preload="metadata" poster="images/background-poster.jpg">
     <source src="images/background.mp4?v=pingpong-1" type="video/mp4">
   </video>
-  <pre id="ascii" aria-hidden="true"></pre>
+  <div class="site-scrim" aria-hidden="true"></div>
 
   <div class="page-wrapper">
-
-    <nav class="site-nav">
-      <img src="images/logo.svg" class="nav-logo" alt="">
-      <a href="index.html">Home</a>
-      <a href="portfolio.html" class="active" aria-current="page">Portfolio</a>
-      <a href="work-with-me.html">Work With Me</a>
-      <a href="blog.html">Blog</a>
-    </nav>
-
-    <div class="page-header">
-      <h1>Portfolio</h1>
-      <p>UX, web design, identity, and everything in between.</p>
-    </div>
+    <header class="site-nav">
+      <nav class="nav-inner" aria-label="Primary">
+        <a class="brand" href="index.html" aria-label="denby.design home"><img src="images/logo.svg" alt=""><span>denby.design</span></a>
+        <div class="desktop-nav">
+          <a href="index.html">Home</a>
+          <a href="portfolio.html" aria-current="page">Portfolio</a>
+          <a href="work-with-me.html">Work With Me</a>
+          <a href="blog.html">Blog</a>
+          <a class="button nav-cta" href="work-with-me.html">Let’s talk</a>
+        </div>
+        <button class="button button-secondary menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">Menu</button>
+      </nav>
+    </header>
 
     <div class="page-content-area">
+      <main id="main">
+        <section class="section container page-intro" aria-labelledby="portfolio-title">
+          <h1 class="display-title" id="portfolio-title">Portfolio</h1>
+          <div class="chapter-links" aria-label="Portfolio sections">
+            <a class="button" href="#featured">Featured projects</a>
+            <a class="button button-secondary" href="#websites">Web &amp; interaction</a>
+            <a class="button button-secondary" href="#identity">Identity &amp; type</a>
+          </div>
+        </section>
 
-      <div class="portfolio-section">
+        <section class="section container case-section" id="featured">
+          <h2 class="section-title">Featured projects</h2>
+          <div class="feature-list">
+            <article class="feature-card">
+              <div class="feature-media"><img src="images/evolved/taixu-feature.png" alt="TAIXU live player-versus-environment combat interface"></div>
+              <div class="feature-copy">
+                <p class="eyebrow">Game design · UX · code</p>
+                <p class="feature-name">TAIXU</p>
+                <h3>A bot-building auto-battling MMO.</h3>
+                <p>I’m designing and coding the game, from equipment stats to the world’s lore to the chaos that emerges when these systems all collide in war and over a long grind.</p>
+                <p class="feature-meta">Game design, UI design &amp; code<br>Independent project · Iterating in alpha</p>
+                <a class="button" href="taixu.html">Explore case study →</a>
+              </div>
+            </article>
+            <article class="feature-card">
+              <div class="feature-media feature-media--amped">
+                <img src="images/evolved/amped-feature-desktop.png" alt="JB POS desktop basket interface">
+                <img src="images/evolved/amped-feature-pda.png" alt="JB POS handheld product-family interface">
+              </div>
+              <div class="feature-copy">
+                <p class="eyebrow">Retail systems · responsive UX</p>
+                <p class="feature-name">JB POS [AMPED]</p>
+                <h3>Prototyping JB POS for store teams.</h3>
+                <p>A desktop and PDA prototype for comparing products, switching baskets and checking what’s needed before payment.</p>
+                <p class="feature-meta">Workflow &amp; interaction design · AI-assisted prototyping<br>Self-initiated exploration · Desktop &amp; PDA prototype</p>
+                <a class="button" href="amped.html">Explore case study →</a>
+              </div>
+            </article>
+          </div>
+        </section>
 
-        <section class="portfolio-category" id="websites">
-          <h2 class="section-label">Websites</h2>
-          <div class="portfolio-grid">
+        <div class="portfolio-section">
+        <section class="portfolio-category section case-section" id="websites">
+          <h2 class="section-title">Web &amp; interaction</h2>
+          <div class="portfolio-grid catalog-grid">
 
             <a class="portfolio-card" href="#modal-f-ing-good-tacos" data-modal="modal-f-ing-good-tacos">
               <img src="images/folio/f-ing-good-tacos-hero.png" alt="F***ing Good Tacos hero banner with taco platter and ordering actions" loading="lazy" decoding="async">
@@ -51,7 +90,7 @@
               <img src="images/folio/jb-retro-fi.svg" alt="JB Retro-Fi" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>JB Retro-Fi</h3>
-                <p>A late-90s inspired JB Hi-Fi tribute site with CRT texture, chunky navigation, and proudly retro web energy.</p>
+                <p>A JB Hi-Fi tribute site styled after the late ’90s, with CRT textures and chunky navigation.</p>
                 <span class="project-tag">Web &middot; Retro Interface</span>
               </div>
             </a>
@@ -60,7 +99,7 @@
               <img src="images/folio/lcu.png" alt="LincUp" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>LincUp</h3>
-                <p>A video-first hiring concept rethinking early-career recruitment through guided intros and human-centred UX.</p>
+                <p>A hiring concept where early-career applicants introduce themselves through guided videos.</p>
                 <span class="project-tag">Product Concept &middot; UX Strategy</span>
               </div>
             </a>
@@ -69,7 +108,7 @@
               <img src="images/folio/cel.png" alt="Celestria" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Celestria</h3>
-                <p>A collaborative STEM learning concept combining web, VR, and game design to make space education more immersive.</p>
+                <p>A collaborative STEM learning concept using web, VR and game design to teach people about space.</p>
                 <span class="project-tag">Collaborative Concept &middot; UX Design</span>
               </div>
             </a>
@@ -78,7 +117,7 @@
               <img src="images/folio/dtt.png" alt="Docksides Treasure Tracker" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Docksides Treasure Tracker</h3>
-                <p>A fast-paced parody game that turns live trading card prices into a playful API-driven challenge.</p>
+                <p>A parody web game built around live trading-card prices from an API.</p>
                 <span class="project-tag">Web Game &middot; API Integration</span>
               </div>
             </a>
@@ -87,7 +126,7 @@
               <img src="images/folio/bnk.png" alt="Mini-Grid Bankability Health Check App" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Mini-Grid Bankability Health Check</h3>
-                <p>A strategic UX prototype helping mini-grid operators assess investment readiness through a structured self-assessment flow.</p>
+                <p>A self-assessment prototype for mini-grid operators reviewing whether a project is ready for investment.</p>
                 <span class="project-tag">UX Prototype &middot; Strategic Design</span>
               </div>
             </a>
@@ -96,7 +135,7 @@
               <img src="images/folio/str1.jpg" alt="Still Good Recycling" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Still Good Recycling</h3>
-                <p>Second-hand clothing made stylish and circular, with "Spin the Rack" and more.</p>
+                <p>A second-hand clothing website with a “Spin the Rack” interaction.</p>
                 <span class="project-tag">Web &middot; Brand</span>
               </div>
             </a>
@@ -105,7 +144,7 @@
               <img src="images/folio/eel2.jpg" alt="Elektrik Eel Festival" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Elektrik-Eel-Festival</h3>
-                <p>A responsive music festival website with jQuery functionality and AI-enhanced visuals.</p>
+                <p>A responsive music-festival website built with jQuery and AI-enhanced visuals.</p>
                 <span class="project-tag">Web &middot; Frontend</span>
               </div>
             </a>
@@ -114,7 +153,7 @@
               <img src="images/folio/woz2.jpg" alt="The Way of Zen" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>The Way of Zen</h3>
-                <p>Zen-inspired interaction meets lofi dreamscape, physical sculpture animated through the web.</p>
+                <p>A web experience that animates a physical sculpture in a lo-fi, Zen-inspired setting.</p>
                 <span class="project-tag">Web &middot; Interaction</span>
               </div>
             </a>
@@ -123,7 +162,7 @@
               <img src="images/folio/dvd1.png" alt="DEN Menu" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>DEN Menu</h3>
-                <p>JavaScript animation project channeling vintage screen vibes and retro interactions.</p>
+                <p>JavaScript animations inspired by vintage screens and retro menus.</p>
                 <span class="project-tag">Web &middot; Animation</span>
               </div>
             </a>
@@ -132,7 +171,7 @@
               <img src="images/folio/foe1.jpg" alt="Foundations of Existence" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Foundations of Existence</h3>
-                <p>Paper sculpture and web design merge to explore creation and materiality.</p>
+                <p>A web project using paper sculpture to explore creation and materials.</p>
                 <span class="project-tag">Web &middot; Interaction</span>
               </div>
             </a>
@@ -150,7 +189,7 @@
               <img src="images/folio/drh1.jpg" alt="Down the Rabbit Hole" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Down the Rabbit Hole</h3>
-                <p>A visual metaphor for curiosity, only the curious get rewarded.</p>
+                <p>An interactive web artwork that rewards curiosity and exploration.</p>
                 <span class="project-tag">Web &middot; Interaction</span>
               </div>
             </a>
@@ -158,15 +197,15 @@
           </div>
         </section>
 
-        <section class="portfolio-category" id="identity">
-          <h2 class="section-label">Identity Design</h2>
-          <div class="portfolio-grid">
+        <section class="portfolio-category section case-section" id="identity">
+          <h2 class="section-title">Identity &amp; type</h2>
+          <div class="portfolio-grid catalog-grid">
 
             <a class="portfolio-card" href="#modal-lettermark" data-modal="modal-lettermark">
               <img src="images/folio/lgm2.jpg" alt="Personal Lettermark Logo" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Personal Lettermark Logo</h3>
-                <p>A foundational design piece exploring self-branding through vector identity design.</p>
+                <p>A vector lettermark I designed for my own identity.</p>
                 <span class="project-tag">Identity &middot; Vector</span>
               </div>
             </a>
@@ -175,7 +214,7 @@
               <img src="images/folio/insitu2.jpg" alt="Insitu Magazine" loading="lazy" decoding="async">
               <div class="portfolio-card-body">
                 <h3>Insitu Magazine</h3>
-                <p>A collaborative magazine celebrating Gippsland stories and design.</p>
+                <p>A collaborative magazine about Gippsland stories and design.</p>
                 <span class="project-tag">Print &middot; Editorial</span>
               </div>
             </a>
@@ -192,13 +231,23 @@
           </div>
         </section>
 
-      </div>
+        </div>
+
+        <section class="contact-band container" aria-labelledby="portfolio-contact-title">
+          <h2 class="section-title section-title-large" id="portfolio-contact-title">Working on something cool?</h2>
+          <p>Need a designer, have a role in mind, or want to talk through an idea? I’d love to hear from you.</p>
+          <div class="contact-actions">
+            <a class="button" href="mailto:hello@denby.design">Email me →</a>
+            <a class="button button-secondary" href="https://www.linkedin.com/in/denby-sa" target="_blank" rel="noopener">Connect on LinkedIn ↗</a>
+          </div>
+        </section>
+      </main>
 
       <footer class="site-footer">
         <p>&copy; Denby Serrao-Arnot</p>
         <div class="footer-links">
           <a href="mailto:hello@denby.design">hello@denby.design</a>
-          <a href="https://linkedin.com/in/denby-arnot" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/denby-sa" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </footer>
 
