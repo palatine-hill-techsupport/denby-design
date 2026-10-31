@@ -16,7 +16,19 @@
   </video>
   <div class="site-scrim" aria-hidden="true"></div>
 
-  <div class="site-shell">
+  <!-- Preserve this original full-screen intro independently of the page designs. -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-content">
+      <img src="images/logo.svg" class="logo" alt="" width="512" height="491">
+      <h1 class="wordmark" id="hero-title">denby.design</h1>
+      <p class="tagline">I'm <span id="rotating-word">a UX designer</span></p>
+    </div>
+    <a class="scroll-arrow" href="#home-content" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+    </a>
+  </section>
+
+  <div class="site-shell" id="home-content" tabindex="-1">
     <header class="site-nav">
       <nav class="nav-inner" aria-label="Primary">
         <a class="brand" href="index.html" aria-label="denby.design home">
@@ -38,7 +50,7 @@
       <section class="home-intro container">
         <div class="intro-card surface">
           <div class="intro-grid">
-            <h1 class="section-title">I design and build<br>digital products.</h1>
+            <h2 class="section-title">I design and build<br>digital products.</h2>
             <p class="copy">Hey, I’m Denby. I’m a UX designer who likes getting into how software works and where it trips people up. I design interfaces, build prototypes and make side projects that tend to get out of hand. Here’s what I’ve been working on.</p>
           </div>
         </div>
