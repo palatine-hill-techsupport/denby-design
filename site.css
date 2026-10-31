@@ -28,7 +28,7 @@ img,video{display:block;max-width:100%}
 /* Keep the waves and text visible beneath a single, lighter colour wash. */
 .site-background{position:fixed;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:.82;pointer-events:none}
 .site-ascii{position:fixed;inset:0;z-index:0;width:100%;height:100%;margin:0;overflow:hidden;white-space:pre;font-family:"Courier New",Courier,monospace;line-height:.95;letter-spacing:.02em;color:var(--accent);opacity:.26;pointer-events:none;user-select:none}
-.site-scrim{position:fixed;inset:0;z-index:0;background:rgba(10,35,38,.55);pointer-events:none}
+.site-scrim{position:fixed;inset:0;z-index:0;background:rgba(10,35,38,.72);pointer-events:none}
 .site-shell{position:relative;z-index:1;display:flex;min-height:100vh;flex-direction:column}
 .page-wrapper{position:relative;z-index:1;display:flex;min-height:100vh;flex-direction:column}
 .page-content-area{display:flex;min-height:calc(100vh - 88px);flex:1;flex-direction:column}
