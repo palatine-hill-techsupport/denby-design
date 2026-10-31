@@ -28,6 +28,20 @@ Then open <http://127.0.0.1:8765/>.
 
 ## Background video
 
+The homepage starts with the original full-viewport intro: centred logo,
+wordmark, rotating tagline, interactive text ripple, and scroll-down control.
+This intro is intentionally separate from the redesigned content and must be
+preserved when updating page designs. Wheel, swipe, and page/arrow keys move
+between the intro and content; scrolling farther into the content stays normal.
+The intro retains its bright backdrop and radial shading. The approved 72%
+teal overlay starts at `#home-content` and remains global on the other pages.
+Reduced-motion preferences disable the background video and text animation,
+tagline rotation, and smooth scroll transitions.
+An optional regression check, `node scripts/check-home-intro.cjs`, verifies the
+intro and its navigation on desktop/mobile, with and without reduced motion.
+It requires Playwright and Chrome; `PLAYWRIGHT_MODULE` can point to an existing
+Playwright installation. These are testing tools, not site dependencies.
+
 `images/background.mp4` contains one forward-and-reverse cycle of the original
 waves, played with the native HTML `loop` attribute. The frame order is
 `0..513, 512..1`, using the first 21.44 seconds of the original footage, so

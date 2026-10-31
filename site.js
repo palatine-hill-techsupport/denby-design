@@ -84,6 +84,102 @@
     syncAnimation();
   }
 
+  function setupHomeIntro() {
+    const hero = document.querySelector(".hero");
+    const content = document.getElementById("home-content");
+    const word = document.getElementById("rotating-word");
+    if (!hero || !content || !word) return;
+
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const words = [
+      "a UX designer", "a digital fixer", "a systems untangler",
+      "a product-minded designer", "a prototype builder", "a friction finder",
+      "a curious generalist", "a design systems nerd",
+      "a practical problem-solver", "a wave-watcher"
+    ];
+    let wordIndex = 0;
+    let rotation;
+    let transition;
+    let snapTimer;
+    let snapping = false;
+    let touchStart = null;
+
+    function syncRotation() {
+      clearInterval(rotation);
+      clearTimeout(transition);
+      word.style.opacity = "1";
+      word.style.transform = "translateY(0)";
+      if (motion.matches || document.hidden) return;
+      rotation = setInterval(() => {
+        word.style.opacity = "0";
+        word.style.transform = "translateY(-6px)";
+        transition = setTimeout(() => {
+          wordIndex = (wordIndex + 1) % words.length;
+          word.textContent = words[wordIndex];
+          word.style.opacity = "1";
+          word.style.transform = "translateY(0)";
+        }, 320);
+      }, 2800);
+    }
+
+    function contentTop() {
+      return content.getBoundingClientRect().top + window.scrollY;
+    }
+
+    function snapTo(top) {
+      clearTimeout(snapTimer);
+      snapping = true;
+      window.scrollTo({ top, behavior: motion.matches ? "instant" : "smooth" });
+      snapTimer = setTimeout(() => { snapping = false; }, motion.matches ? 80 : 760);
+    }
+
+    function snapBetweenSections(direction) {
+      if (!direction || document.body.matches(".menu-open, .modal-open")) return false;
+      if (snapping) return true;
+      if (direction > 0 && window.scrollY < contentTop() - 24) {
+        snapTo(contentTop());
+        return true;
+      }
+      if (direction < 0 && window.scrollY > 0 && window.scrollY <= contentTop() + 24) {
+        snapTo(0);
+        return true;
+      }
+      return false;
+    }
+
+    hero.querySelector(".scroll-arrow").addEventListener("click", (event) => {
+      event.preventDefault();
+      snapTo(contentTop());
+      content.focus({ preventScroll: true });
+    });
+    window.addEventListener("wheel", (event) => {
+      if (event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+      if (snapBetweenSections(event.deltaY)) event.preventDefault();
+    }, { passive: false });
+    window.addEventListener("touchstart", (event) => {
+      const touch = event.touches.length === 1 ? event.touches[0] : null;
+      touchStart = touch ? { x: touch.clientX, y: touch.clientY } : null;
+    }, { passive: true });
+    window.addEventListener("touchmove", (event) => {
+      if (!touchStart || event.touches.length !== 1) return;
+      const deltaY = touchStart.y - event.touches[0].clientY;
+      const deltaX = touchStart.x - event.touches[0].clientX;
+      if (Math.abs(deltaY) < 18 || Math.abs(deltaX) > Math.abs(deltaY)) return;
+      if (snapBetweenSections(deltaY)) event.preventDefault();
+      touchStart = null;
+    }, { passive: false });
+    window.addEventListener("keydown", (event) => {
+      if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey) return;
+      if (event.target.closest("a, button, input, select, textarea, [contenteditable], dialog, [role=dialog]")) return;
+      const down = ["ArrowDown", "PageDown", " "].includes(event.key);
+      const up = ["ArrowUp", "PageUp"].includes(event.key) || (event.key === " " && event.shiftKey);
+      if (snapBetweenSections(up ? -1 : down ? 1 : 0)) event.preventDefault();
+    });
+    motion.addEventListener("change", syncRotation);
+    document.addEventListener("visibilitychange", syncRotation);
+    syncRotation();
+  }
+
   const focusableSelector = [
     "a[href]",
     "button:not([disabled])",
@@ -283,6 +379,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     respectReducedMotion();
     setupBackgroundText();
+    setupHomeIntro();
     buildMobileMenu();
     setupPortfolioModals();
     setupBlogSearch();
