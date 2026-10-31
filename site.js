@@ -1,6 +1,89 @@
 (() => {
   "use strict";
 
+  function setupBackgroundText() {
+    const scrim = document.querySelector(".site-scrim");
+    if (!scrim) return;
+    const ascii = document.createElement("pre");
+    ascii.className = "site-ascii";
+    ascii.setAttribute("aria-hidden", "true");
+    scrim.before(ascii);
+
+    const chars = "denby.design";
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    let cols = 0;
+    let rows = 0;
+    let cellW = 10;
+    let cellH = 16;
+    let mouseX = innerWidth / 2;
+    let mouseY = innerHeight / 2;
+    let frame = 0;
+    let lastFrame = 0;
+    const start = performance.now();
+
+    function measure() {
+      const width = ascii.clientWidth;
+      const height = ascii.clientHeight;
+      const portrait = height > width;
+      const targetCols = width < 700 ? (portrait ? 30 : 46) : 92;
+      const targetRows = width < 700 ? (portrait ? 40 : 24) : 42;
+      const size = clamp(Math.min((width - 20) / (targetCols * .62), (height - 20) / (targetRows * .95)), 8, 18);
+      ascii.style.fontSize = `${size}px`;
+      cellW = size * .62;
+      cellH = size * .95;
+      cols = Math.ceil(width / cellW) + 1;
+      rows = Math.ceil(height / cellH) + 1;
+      draw(performance.now());
+    }
+
+    function draw(now) {
+      const t = motion.matches ? 0 : (now - start) / 1000;
+      const mx = mouseX / cellW;
+      const my = mouseY / cellH;
+      let output = "";
+      for (let y = 0; y < rows; y += 1) {
+        for (let x = 0; x < cols; x += 1) {
+          const radius = Math.hypot(x - cols / 2, y - rows / 2);
+          const pointerRadius = Math.hypot(x - mx, y - my);
+          const wave = Math.sin(radius * .55 - t * 3.1) * .55
+            + Math.sin(x * .35 + y * .2 + t * 1.35) * .2
+            + Math.cos(x * .16 - y * .28 - t * 1.1) * .18
+            + Math.sin(pointerRadius * .95 - t * 5.2) * Math.exp(-pointerRadius * .065);
+          output += chars[Math.floor(clamp((wave + 1.8) / 3.6, 0, 1) * (chars.length - 1))];
+        }
+        if (y < rows - 1) output += "\n";
+      }
+      ascii.textContent = output;
+    }
+
+    function animate(now) {
+      frame = 0;
+      if (motion.matches || document.hidden) return;
+      if (now - lastFrame >= 1000 / 30) {
+        draw(now);
+        lastFrame = now;
+      }
+      frame = requestAnimationFrame(animate);
+    }
+
+    function syncAnimation() {
+      cancelAnimationFrame(frame);
+      draw(performance.now());
+      if (!motion.matches && !document.hidden) frame = requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", measure);
+    window.addEventListener("pointermove", (event) => {
+      mouseX = event.clientX;
+      mouseY = event.clientY;
+    }, { passive: true });
+    motion.addEventListener("change", syncAnimation);
+    document.addEventListener("visibilitychange", syncAnimation);
+    measure();
+    syncAnimation();
+  }
+
   const focusableSelector = [
     "a[href]",
     "button:not([disabled])",
@@ -199,6 +282,7 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     respectReducedMotion();
+    setupBackgroundText();
     buildMobileMenu();
     setupPortfolioModals();
     setupBlogSearch();

@@ -43,6 +43,20 @@ the already combined cycle again.
 
 ## Publishing checklist
 
+### Featured screenshot previews
+
+The original PNG screenshots remain unchanged in `images/evolved/`. Featured
+cards use prefiltered, lossless WebP thumbnails through `srcset`, so the browser
+does not have to shrink dense interface text directly from a full-screen capture.
+Separate sizes support ordinary and high-density displays without upscaling.
+
+After replacing one of these original PNGs, regenerate its thumbnails with
+`node scripts/generate-preview-images.cjs`. This optional maintenance script needs
+the `sharp` Node module; `SHARP_MODULE` can point to an existing installation.
+Neither Node nor `sharp` is needed to serve the site.
+
+### Blog posts
+
 When adding a post, keep these in sync:
 
 1. Add the article under `posts/`.
