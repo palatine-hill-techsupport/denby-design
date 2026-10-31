@@ -1,335 +1,207 @@
-// ── ASCII ripple ─────────────────────────────────────────────────
-const ascii = document.getElementById("ascii");
-const chars = "denby.design";
-const S = {
-  cols: 0, rows: 0,
-  cellW: 10, cellH: 16,
-  padX: 0, padY: 0,
-  left: 0, top: 0, width: 0, height: 0,
-  t0: performance.now(),
-  mouseX: innerWidth * 0.5, mouseY: innerHeight * 0.5,
-  mouseVX: 0, mouseVY: 0,
-  lastMX: innerWidth * 0.5, lastMY: innerHeight * 0.5,
-  lastMoveT: performance.now(),
-  pulse: 0
-};
+(() => {
+  "use strict";
 
-const clamp = (v, a, b) => v < a ? a : v > b ? b : v;
+  const focusableSelector = [
+    "a[href]",
+    "button:not([disabled])",
+    "input:not([disabled])",
+    "select:not([disabled])",
+    "textarea:not([disabled])",
+    "[tabindex]:not([tabindex='-1'])"
+  ].join(",");
 
-function measureGrid() {
-  const vp = window.visualViewport;
-  const vw = vp ? vp.width : innerWidth;
-  const vh = vp ? vp.height : innerHeight;
-  const portrait = vh > vw;
-  const tCols = vw < 700 ? (portrait ? 30 : 46) : 92;
-  const tRows = vw < 700 ? (portrait ? 40 : 24) : 42;
-  ascii.style.fontSize = `${clamp(Math.min((vw - 20) / (tCols * 0.62), (vh - 20) / (tRows * 0.95)), 8, 18)}px`;
-
-  const st = getComputedStyle(ascii);
-  const ls = parseFloat(st.letterSpacing);
-  const lspx = isFinite(ls) ? ls : 0;
-
-  const probe = document.createElement("span");
-  probe.textContent = "MMMMMMMMMM";
-  probe.style.cssText = `visibility:hidden;position:absolute;font:${st.font};letter-spacing:${st.letterSpacing}`;
-  document.body.appendChild(probe);
-  const r = probe.getBoundingClientRect();
-  document.body.removeChild(probe);
-
-  S.cellW = Math.max(1, (r.width + lspx) / 10);
-  const clh = parseFloat(st.lineHeight);
-  S.cellH = Math.max(1, isFinite(clh) ? clh : r.height * 0.95);
-
-  const ar = ascii.getBoundingClientRect();
-  S.left = ar.left; S.top = ar.top;
-  S.width = ar.width || vw; S.height = ar.height || vh;
-  S.cols = Math.max(30, Math.ceil((S.width  - S.padX * 2) / S.cellW) + 1);
-  S.rows = Math.max(14, Math.ceil((S.height - S.padY * 2) / S.cellH) + 1);
-}
-
-function onPointerMove(e) {
-  const now = performance.now();
-  const dt  = Math.max(8, now - S.lastMoveT);
-  const dx  = e.clientX - S.lastMX;
-  const dy  = e.clientY - S.lastMY;
-  S.mouseVX = dx / dt; S.mouseVY = dy / dt;
-  S.mouseX = e.clientX; S.mouseY = e.clientY;
-  S.lastMX = e.clientX; S.lastMY = e.clientY;
-  S.lastMoveT = now;
-  S.pulse = Math.min(1.5, S.pulse + Math.hypot(dx, dy) * 0.01);
-}
-
-function sample(x, y, t) {
-  const sx = x - S.cols * 0.5, sy = y - S.rows * 0.5;
-  const r  = Math.hypot(sx, sy) || 1;
-  const mx = clamp((S.mouseX - S.left - S.padX) / S.cellW, 0, S.cols - 1);
-  const my = clamp((S.mouseY - S.top  - S.padY) / S.cellH, 0, S.rows - 1);
-  const dxm = x - mx, dym = y - my;
-  const rm  = Math.hypot(dxm, dym) || 1;
-
-  const base =
-    Math.sin(r * 0.55 - t * 3.1) * 0.55 +
-    Math.sin((x * 0.35 + y * 0.2)  + t * 1.35) * 0.2 +
-    Math.cos((x * 0.16 - y * 0.28) - t * 1.1)  * 0.18;
-
-  const mouseRipple =
-    Math.sin(rm * 0.95 - t * 5.2 + S.pulse * 1.5) *
-    Math.exp(-rm * 0.065) *
-    (0.95 + Math.min(1, Math.hypot(S.mouseVX, S.mouseVY) * 4));
-
-  const mousePull    = Math.exp(-rm * 0.09) * 0.65;
-  const directional  = ((dxm * S.mouseVX) + (dym * S.mouseVY)) * Math.exp(-rm * 0.12) * 0.08;
-  const drift        = Math.sin((x / S.cols * 8 + t * 0.35)) * Math.cos((y / S.rows * 6 - t * 0.22)) * 0.12;
-
-  return base + mouseRipple + mousePull + directional + drift;
-}
-
-function renderAscii(now) {
-  const t = (now - S.t0) / 1000;
-  S.pulse   *= 0.965;
-  S.mouseVX *= 0.96;
-  S.mouseVY *= 0.96;
-
-  let out = "";
-  for (let y = 0; y < S.rows; y++) {
-    for (let x = 0; x < S.cols; x++) {
-      out += chars[Math.floor(clamp((sample(x, y, t) + 1.8) / 3.6, 0, 1) * (chars.length - 1))];
+  function trapFocus(container, event) {
+    if (event.key !== "Tab") return;
+    const focusable = [...container.querySelectorAll(focusableSelector)]
+      .filter((element) => !element.hasAttribute("hidden"));
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
-    if (y < S.rows - 1) out += "\n";
-  }
-  ascii.textContent = out;
-  requestAnimationFrame(renderAscii);
-}
-
-window.addEventListener("resize", measureGrid);
-window.addEventListener("orientationchange", measureGrid);
-window.addEventListener("mousemove", onPointerMove, { passive: true });
-window.addEventListener("touchmove", e => {
-  if (e.touches[0]) onPointerMove(e.touches[0]);
-}, { passive: true });
-window.addEventListener("touchstart", e => {
-  if (e.touches[0]) onPointerMove(e.touches[0]);
-}, { passive: true });
-if (window.visualViewport) {
-  window.visualViewport.addEventListener("resize", measureGrid);
-  window.visualViewport.addEventListener("scroll", measureGrid);
-}
-measureGrid();
-requestAnimationFrame(measureGrid);
-requestAnimationFrame(renderAscii);
-
-// ── Scroll arrow (homepage) ──────────────────────────────────────
-const scrollArrow = document.querySelector('.scroll-arrow');
-if (scrollArrow) {
-  scrollArrow.addEventListener('click', e => {
-    e.preventDefault();
-    const main = document.getElementById('main');
-    if (main) window.scrollTo({ top: main.offsetTop, behavior: 'smooth' });
-  });
-}
-
-const hero = document.querySelector('.hero');
-const main = document.getElementById('main');
-if (hero && main) {
-  const snapMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let isSnapping = false;
-  let snapLockTimer;
-  let touchStartY = null;
-
-  function getMainTop() {
-    return main.offsetTop;
   }
 
-  function snapToY(top) {
-    clearTimeout(snapLockTimer);
-    isSnapping = true;
-    window.scrollTo({
-      top,
-      behavior: snapMotion.matches ? 'auto' : 'smooth'
+  function buildMobileMenu() {
+    const trigger = document.querySelector(".menu-toggle");
+    if (!trigger || !("HTMLDialogElement" in window)) return;
+
+    const currentPage = document.body.dataset.page || "";
+    const root = location.pathname.includes("/posts/") ? "../" : "";
+    const items = [
+      ["home", "Home", `${root}index.html`],
+      ["portfolio", "Portfolio", `${root}portfolio.html`],
+      ["work", "Work With Me", `${root}work-with-me.html`],
+      ["blog", "Blog", `${root}blog.html`],
+      ["taixu", "TAIXU", `${root}taixu.html`],
+      ["amped", "JB POS [AMPED]", `${root}amped.html`]
+    ];
+    const links = items.map(([key, label, href]) => {
+      const current = key === currentPage ? ' aria-current="page"' : "";
+      return `<a href="${href}"${current}>${label}</a>`;
+    }).join("");
+
+    const dialog = document.createElement("dialog");
+    dialog.className = "mobile-menu";
+    dialog.id = "mobile-menu";
+    dialog.setAttribute("aria-labelledby", "mobile-menu-title");
+    dialog.innerHTML = `
+      <div class="mobile-menu-inner">
+        <p class="mobile-menu-title" id="mobile-menu-title">Where would you like to go?</p>
+        <button class="menu-close" type="button">Close menu ×</button>
+        <nav class="mobile-menu-links" aria-label="Mobile">
+          ${links}
+        </nav>
+      </div>`;
+    document.body.append(dialog);
+
+    const close = dialog.querySelector(".menu-close");
+    const setOpenState = (open) => {
+      trigger.setAttribute("aria-expanded", String(open));
+      document.body.classList.toggle("menu-open", open);
+    };
+
+    trigger.addEventListener("click", () => {
+      dialog.showModal();
+      setOpenState(true);
+      close.focus();
     });
-    snapLockTimer = setTimeout(() => {
-      isSnapping = false;
-    }, snapMotion.matches ? 80 : 760);
-  }
-
-  function maybeSnapBetweenHeroAndMain(direction) {
-    if (document.body.classList.contains('modal-open')) return false;
-    if (isSnapping) return true;
-
-    const y = window.scrollY;
-    const mainTop = getMainTop();
-    const boundarySlack = 24;
-
-    if (direction > 0 && y < mainTop - boundarySlack) {
-      snapToY(mainTop);
-      return true;
-    }
-
-    if (direction < 0 && y <= mainTop + boundarySlack) {
-      snapToY(0);
-      return true;
-    }
-
-    return false;
-  }
-
-  window.addEventListener('wheel', e => {
-    if (maybeSnapBetweenHeroAndMain(e.deltaY)) e.preventDefault();
-  }, { passive: false });
-
-  window.addEventListener('touchstart', e => {
-    touchStartY = e.touches[0] ? e.touches[0].clientY : null;
-  }, { passive: true });
-
-  window.addEventListener('touchmove', e => {
-    if (touchStartY === null || !e.touches[0]) return;
-    const deltaY = touchStartY - e.touches[0].clientY;
-    if (Math.abs(deltaY) < 18) return;
-    if (maybeSnapBetweenHeroAndMain(deltaY)) e.preventDefault();
-    touchStartY = null;
-  }, { passive: false });
-
-  window.addEventListener('keydown', e => {
-    const scrollDownKeys = ['ArrowDown', 'PageDown', ' '];
-    const scrollUpKeys = ['ArrowUp', 'PageUp'];
-    const direction = scrollDownKeys.includes(e.key) ? 1 : scrollUpKeys.includes(e.key) ? -1 : 0;
-
-    if (direction && maybeSnapBetweenHeroAndMain(direction)) {
-      e.preventDefault();
-    }
-  });
-}
-
-// ── Rotating headline (homepage only) ───────────────────────────
-const headlineEl = document.getElementById("rotating-headline");
-if (headlineEl) {
-  const headlines = [
-    "Because \u201cgood enough\u201d<br>sometimes isn\u2019t.",
-    "For products people<br>have to live with.",
-    "Less busywork.<br>Better products.",
-  ];
-  let headlineIdx = 0;
-  function rotateHeadline() {
-    headlineEl.style.opacity = "0";
-    headlineEl.style.transform = "translateY(-8px)";
-    setTimeout(() => {
-      headlineIdx = (headlineIdx + 1) % headlines.length;
-      headlineEl.innerHTML = headlines[headlineIdx];
-      headlineEl.style.opacity = "1";
-      headlineEl.style.transform = "translateY(0)";
-    }, 350);
-  }
-  setInterval(rotateHeadline, 4500);
-}
-
-// ── Rotating tagline (homepage only) ────────────────────────────
-const rotEl = document.getElementById("rotating-word");
-if (rotEl) {
-  const words = [
-    "a UX designer",
-    "a digital fixer",
-    "a systems untangler",
-    "a product-minded designer",
-    "a prototype builder",
-    "a friction finder",
-    "a curious generalist",
-    "a design systems nerd",
-    "a practical problem-solver",
-    "a wave-watcher",
-  ];
-  let wordIdx = 0;
-  function rotateWord() {
-    rotEl.style.opacity = "0";
-    rotEl.style.transform = "translateY(-6px)";
-    setTimeout(() => {
-      wordIdx = (wordIdx + 1) % words.length;
-      rotEl.textContent = words[wordIdx];
-      rotEl.style.opacity = "1";
-      rotEl.style.transform = "translateY(0)";
-    }, 320);
-  }
-  setInterval(rotateWord, 2800);
-}
-
-// ── Modal system ─────────────────────────────────────────────────
-document.addEventListener("DOMContentLoaded", () => {
-  // Auto-open modal from URL hash (e.g. portfolio.html#modal-still-good)
-  if (window.location.hash) {
-    const target = document.querySelector(window.location.hash);
-    if (target && target.classList.contains("modal")) {
-      target.classList.add("is-open");
-      document.body.classList.add("modal-open");
-      // Clean the hash from the URL without triggering a scroll jump
-      history.replaceState(null, "", window.location.pathname);
-    }
-  }
-
-  // Open via data-modal attribute
-  document.querySelectorAll("[data-modal]").forEach(trigger => {
-    trigger.addEventListener("click", e => {
-      e.preventDefault();
-      const id = trigger.getAttribute("data-modal");
-      const modal = document.getElementById(id);
-      if (modal) {
-        modal.classList.add("is-open");
-        document.body.classList.add("modal-open");
-      }
+    close.addEventListener("click", () => dialog.close());
+    dialog.addEventListener("close", () => {
+      setOpenState(false);
+      trigger.focus();
     });
-  });
-
-  // Close via × button
-  document.querySelectorAll(".close-modal").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const modal = btn.closest(".modal");
-      if (modal) {
-        modal.classList.remove("is-open");
-        document.body.classList.remove("modal-open");
-      }
+    dialog.addEventListener("cancel", () => setOpenState(false));
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
     });
-  });
+  }
 
-  // Close on backdrop click
-  document.querySelectorAll(".modal").forEach(modal => {
-    modal.addEventListener("click", e => {
-      if (e.target === modal) {
-        modal.classList.remove("is-open");
-        document.body.classList.remove("modal-open");
-      }
-    });
-  });
+  function setupPortfolioModals() {
+    const modals = [...document.querySelectorAll(".modal")];
+    if (!modals.length) return;
+    let returnFocus = null;
 
-  // Close on Escape
-  document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-      document.querySelectorAll(".modal.is-open").forEach(modal => {
-        modal.classList.remove("is-open");
-      });
+    const closeModal = (modal, updateUrl = true) => {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
       document.body.classList.remove("modal-open");
-    }
-  });
+      if (updateUrl && location.hash === `#${modal.id}`) {
+        history.replaceState(null, "", location.pathname + location.search);
+      }
+      if (returnFocus) returnFocus.focus();
+    };
 
-  // Blog archive search
-  const blogSearch = document.getElementById("blog-search");
-  const blogCards = Array.from(document.querySelectorAll(".blog-archive-card"));
-  const blogEmpty = document.getElementById("blog-empty");
-  if (blogSearch && blogCards.length) {
-    blogSearch.addEventListener("input", () => {
-      const query = blogSearch.value.trim().toLowerCase();
-      let visibleCount = 0;
+    const openModal = (modal, trigger) => {
+      modals.filter((item) => item !== modal).forEach((item) => closeModal(item, false));
+      returnFocus = trigger || document.activeElement;
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      modal.setAttribute("role", "dialog");
+      modal.setAttribute("aria-modal", "true");
+      document.body.classList.add("modal-open");
+      const heading = modal.querySelector("h2");
+      if (heading && !heading.id) heading.id = `${modal.id}-title`;
+      if (heading) modal.setAttribute("aria-labelledby", heading.id);
+      const close = modal.querySelector(".close-modal");
+      if (close) close.focus();
+    };
 
-      blogCards.forEach(card => {
-        const haystack = [
-          card.dataset.title,
-          card.dataset.category,
-          card.dataset.excerpt,
-          card.textContent
-        ].join(" ").toLowerCase();
-        const isVisible = haystack.includes(query);
-        card.hidden = !isVisible;
-        if (isVisible) visibleCount += 1;
+    document.querySelectorAll("[data-modal]").forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        const modal = document.getElementById(trigger.dataset.modal);
+        if (!modal) return;
+        event.preventDefault();
+        history.replaceState(null, "", `#${modal.id}`);
+        openModal(modal, trigger);
       });
+    });
 
-      if (blogEmpty) blogEmpty.hidden = visibleCount > 0;
+    modals.forEach((modal) => {
+      modal.setAttribute("aria-hidden", "true");
+      modal.querySelector(".close-modal")?.addEventListener("click", () => closeModal(modal));
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal(modal);
+      });
+      modal.addEventListener("keydown", (event) => trapFocus(modal, event));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key !== "Escape") return;
+      const open = document.querySelector(".modal.is-open");
+      if (open) closeModal(open);
+    });
+
+    if (location.hash) {
+      const modal = document.querySelector(location.hash);
+      if (modal?.classList.contains("modal")) openModal(modal, null);
+    }
+  }
+
+  function setupBlogSearch() {
+    const input = document.getElementById("blog-search");
+    const cards = [...document.querySelectorAll(".article-card[data-search]")];
+    const empty = document.getElementById("blog-empty");
+    const status = document.getElementById("blog-status");
+    if (!input || !cards.length) return;
+
+    const filter = () => {
+      const query = input.value.trim().toLocaleLowerCase();
+      let visible = 0;
+      cards.forEach((card) => {
+        const matches = !query || card.dataset.search.toLocaleLowerCase().includes(query);
+        card.hidden = !matches;
+        if (matches) visible += 1;
+      });
+      if (empty) empty.hidden = visible > 0;
+      if (status) {
+        status.textContent = query
+          ? `${visible} ${visible === 1 ? "post" : "posts"} found.`
+          : "";
+      }
+    };
+    input.addEventListener("input", filter);
+  }
+
+  function respectReducedMotion() {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    document.querySelectorAll(".site-background").forEach((video) => {
+      video.pause();
+      video.removeAttribute("autoplay");
     });
   }
-});
+
+  function setupEmailForm() {
+    const form = document.querySelector("[data-email-form]");
+    if (!form) return;
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const name = String(data.get("name") || "").trim();
+      const email = String(data.get("email") || "").trim();
+      const reason = String(data.get("reason") || "").trim();
+      const message = String(data.get("message") || "").trim();
+      const subject = reason || "A conversation with Denby";
+      const body = [
+        message,
+        "",
+        name ? `From: ${name}` : "",
+        email ? `Reply to: ${email}` : ""
+      ].filter(Boolean).join("\n");
+      location.href = `mailto:hello@denby.design?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    respectReducedMotion();
+    buildMobileMenu();
+    setupPortfolioModals();
+    setupBlogSearch();
+    setupEmailForm();
+  });
+})();
