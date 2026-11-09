@@ -38,6 +38,7 @@
         <p class="lead">TAIXU is an online bot-builder, idle MMO and automated battler. I’m designing and coding the game, from equipment stats and interfaces to the world’s lore.</p>
         <p class="eyebrow">Independent project · Iterating in alpha</p>
         <div class="chapter-links" aria-label="Case study sections">
+          <a class="button button-secondary" href="#combat-pivot">Combat design</a>
           <a class="button button-secondary" href="#stats">Stats &amp; bot selection</a>
           <a class="button button-secondary" href="#progress">Development &amp; next steps</a>
           <a class="button button-secondary" href="#walkthrough">Walkthrough plan</a>
@@ -58,6 +59,56 @@
           <h2>Current state</h2>
           <p>An evolving alpha, with ongoing polish and targeted technical checks as the systems grow.</p>
         </article>
+      </section>
+
+      <section class="section container stack gap-28 case-section" id="combat-pivot" aria-labelledby="combat-pivot-title">
+        <p class="eyebrow">Combat design · From casting to preparation</p>
+        <h2 class="section-title" id="combat-pivot-title">Moving decisions before the fight</h2>
+        <p class="lead">I wanted a fight to resolve from the choices a player had already committed, even if nobody opened Watch. Viewers still see the fight play out at normal speed, but opening it doesn’t start the fight or change its outcome.</p>
+        <p class="copy">Players choose their bots, fitted parts and up to six shared Station Uplinks before committing. Once the fight is accepted, those inputs are locked and abilities trigger automatically when their conditions are met. Some Uplinks lower the Station’s Capacity refill ceiling while selected; none charge Capacity each time they trigger.</p>
+        <p class="copy">These native development captures show three different scenarios, not one continuous fight.</p>
+
+        <ol class="combat-captures stack gap-24" role="list">
+          <li>
+            <figure class="info-card combat-capture">
+              <img src="images/evolved/taixu-combat-manual.png" width="1920" height="1080" alt="Old Penglai City Ruins battle view with a manual ability bar, Capacity at 24 out of 24 and Shield Injection on cooldown." loading="lazy" decoding="async">
+              <figcaption class="case-copy">
+                <p class="eyebrow">01 / Before</p>
+                <h3>Cast during the fight</h3>
+                <p>The old Watch screen was also a control panel. Players chose when to fire abilities while tracking Capacity and cooldowns.</p>
+                <a class="text-link" href="images/evolved/taixu-combat-manual.png">View full-size battle capture →</a>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="info-card combat-capture">
+              <img src="images/evolved/taixu-combat-lab.png" width="1366" height="768" alt="Lab Abilities tab with Emergency Bulkhead expanded in the Inactive list, showing its trigger and five-round cooldown." loading="lazy" decoding="async">
+              <figcaption class="case-copy">
+                <p class="eyebrow">02 / Prepare</p>
+                <h3>Choose what should trigger</h3>
+                <p>In the Lab, players can read a trigger before selecting an Uplink. Emergency Bulkhead, for example, responds when an ally falls to 50% Health or less after hostile damage. It doesn’t heal or revive.</p>
+                <a class="text-link" href="images/evolved/taixu-combat-lab.png">View full-size Lab capture →</a>
+              </figcaption>
+            </figure>
+          </li>
+          <li>
+            <figure class="info-card combat-capture">
+              <img src="images/evolved/taixu-combat-training.png" width="1920" height="1080" alt="Automatic Training battle with a read-only Uplink list beneath the arena and a combat record that says Cold Start activates automatically." loading="lazy" decoding="async">
+              <figcaption class="case-copy">
+                <p class="eyebrow">03 / Watch</p>
+                <h3>See what happened</h3>
+                <p>Watch shows the committed Uplinks without cast controls. In this separate Training example, the combat record shows Cold Start activating automatically, not Emergency Bulkhead.</p>
+                <a class="text-link" href="images/evolved/taixu-combat-training.png">View full-size Training capture →</a>
+              </figcaption>
+            </figure>
+          </li>
+        </ol>
+
+        <div class="info-card">
+          <h3>Implemented in development</h3>
+          <p>The 1–7 November 2026 implementation window covered 30 Uplinks and five formerly manual equipment abilities across eight workstreams. Those dates describe elapsed calendar time, not person-hours.</p>
+          <p>Automatic-only combat is implemented in development. Public release and broader player validation are still pending. The next question is whether players can predict what their setup will do, then recognise why an ability fired when they watch.</p>
+        </div>
       </section>
 
       <section class="section container stack gap-28 case-section" id="stats">
