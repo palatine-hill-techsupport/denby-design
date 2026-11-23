@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Reverse Sear Web Design &middot; denby.design</title>
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+  <link rel="alternate" type="application/rss+xml" title="denby.design Blog" href="../rss.xml">
+  <link rel="stylesheet" href="../site.css">
+</head>
+<body data-page="blog">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <video class="site-background" autoplay muted loop playsinline preload="metadata" poster="../images/background-poster.jpg">
+    <source src="../images/background.mp4?v=pingpong-1" type="video/mp4">
+  </video>
+  <div class="site-scrim" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+    <header class="site-nav">
+      <nav class="nav-inner" aria-label="Primary">
+        <a class="brand" href="../index.html" aria-label="denby.design home"><img src="../images/logo.svg" alt=""><span>denby.design</span></a>
+        <div class="desktop-nav">
+          <a href="../index.html">Home</a>
+          <a href="../portfolio.html">Portfolio</a>
+          <a href="../work-with-me.html">Work With Me</a>
+          <a href="../blog.html" aria-current="page">Blog</a>
+          <a class="button nav-cta" href="../work-with-me.html">Let’s talk</a>
+        </div>
+        <button class="button button-secondary menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false">Menu</button>
+      </nav>
+    </header>
+
+    <div class="page-header">
+      <h1>Blog</h1>
+      <p>Thoughts on UX, digital design, tech trends, and the odd shovel hunt.</p>
+    </div>
+
+    <main class="page-content-area" id="main">
+      <div class="blog-section">
+        <a class="text-link blog-back-link" href="../blog.html">&larr; All posts</a>
+
+        <article class="blog-post blog-post--full" id="reverse-sear-web-design">
+          <header class="blog-post-header">
+            <span class="section-label">Design &amp; AI</span>
+            <h2>Reverse Sear Web Design</h2>
+            <p class="blog-meta">Draft &middot; <time datetime="2026-11-24">24 November 2026</time> &middot; 5 min read</p>
+          </header>
+
+          <div class="blog-post-body">
+            <p>About two hours into a design session, we had a working React version of an idea that had mostly lived in my head that morning. A business analyst, an engineer and I had already walked through it as different users, moved a few things around and got it close enough to put in front of people working in our stores.</p>
+
+            <p>The slightly backwards part? We hadn’t opened Figma yet. By the time we did, the product had been through store feedback, stakeholder review and into production.</p>
+
+            <p>I’ve taken to calling this <strong>Reverse Sear Web Design</strong>. If you’re familiar with barbecuing, you can probably see where I’m going with this. You cook the steak through first and give it a sear at the end. In our case, the Figma file I’d usually produce towards the start came out of a product people were already using.</p>
+
+            <h3>This was going through the agents regardless</h3>
+
+            <p>I started noticing this while trying to stay across a fairly large team’s worth of projects. Since about mid-2025, I’ve watched the models get considerably better at both design and code. By 2026, just about every project I was involved in was doing <em>something</em> with AI. Different models, different wrappers, different ideas about where design and development should start. Sometimes within the same team.</p>
+
+            <p>I get the appeal. When you’ve got an idea and an engineer can have something working by lunch, asking everyone to wait while you work through the design can be a hard sell. Equally, if the first time the designer sees it is <em>after</em> lunch, there’s a fair chance they’ll spot something that would’ve been much easier to sort out that morning. It goes both ways. I can get Claude to build an interface I’m happy with and an engineer can give me several very good reasons it won’t work in our product.</p>
+
+            <p>On this particular project, I had a pretty clear idea of what I wanted to do. I also knew it was going through the agents regardless. I’d done enough experimenting with my own AI tools to suspect there was something in getting us all around the table for that bit.</p>
+
+            <p>Preferably the same table, although it’s 2026 and a Teams call will do in a pinch.</p>
+
+            <h3>What we actually did in those two hours</h3>
+
+            <p>We took the concept through some early research with our internal agents, then worked it up with Claude as a live React mock-up. We had our actual repo to work from, along with the assets, patterns and rules we already use across our products. That mattered. We wanted to build something that could carry on through development, and quite a few design decisions had already been made by virtue of this thing needing to live inside an existing product.</p>
+
+            <p>The first few versions were honestly almost spot on. Most of the back and forth came once we started trying to <em>use</em> it.</p>
+
+            <p>We’d pick a user, walk through what they were there to do, then go back and try it from someone else’s perspective. That’s where the conversation started sounding a lot more like a design session.</p>
+
+            <p>“Wouldn’t this be better as a button here?”</p>
+
+            <p>“Shouldn’t we call this out?”</p>
+
+            <p>“That doesn’t quite look like our business.”</p>
+
+            <p>In my experience, an agent can get remarkably close to the picture you have in your head and still miss the broader context of using the thing. A button can look perfectly at home on a screen. Whether someone needs it <em>there</em>, at that point in their work, is a different question. With the three of us walking through the same flow, we could talk that through, change it and have another go while we still remembered what bothered us.</p>
+
+            <h3>Then we went to stores</h3>
+
+            <p>We got the working version in front of the people who’d actually use it, our team members in stores. We got their feedback, went back for another round of changes and <em>then</em> took it to the stakeholders. By the time they saw it, it was almost perfectly cooked already.</p>
+
+            <p>They were rapt. It was our first project to go from dev to prod in less than a month. I’m speaking from the design side here. The team are still ironing out a few bugs in prod, nothing major.</p>
+
+            <p>The part I’d want to repeat is getting store feedback while we still had time to do something with it. There are things you only learn once someone who actually does the job gets their hands on what you’ve made. When that happens towards the end of a project, some perfectly sensible improvements end up on the table for next time. On this one, store feedback was already in the product our stakeholders saw.</p>
+
+            <h3>So why bother going back to Figma?</h3>
+
+            <p>Because we shipped quickly, we started getting design feedback from live use pretty quickly too. Bringing the interface back into Figma through Claude’s MCP connection took very little effort, and having that file around has already paid off.</p>
+
+            <p>Sometimes I want to move a few things around and see how they sit together. Sometimes it’s a copy change. Why burn tokens and waste water asking an agent to change a header from yellow to red when I can just change the bloody header?</p>
+
+            <p>Other feedback makes more sense once you can click through the flow again. For that, we can go back into Claude, work through it together and take it around for another pass with users. Having both available gives us somewhere to make the next design decision without leaving the team with a vibe coded product and a pile of code.</p>
+
+            <h3>Would I do it again?</h3>
+
+            <p>On an existing product, absolutely. We had a repo, an established design language and access to people in stores who could tell us how the thing held up. Those conditions did a fair bit of work. I’d consider it for something brand new too, if the stakes were low and we could afford to change direction quickly. If we were still trying to understand the problem, I’d spend more time there first.</p>
+
+            <p>Giving it a name might seem a little indulgent. Teams have been changing the order they build things in for years. But if you’re a stakeholder who doesn’t spend your day bouncing between Claude, React and Figma, it’s reasonable to want to know what’s going on. Is the thing you’re looking at finished? Have stores seen it? Is now a good time to suggest a change? Being able to explain what we’re doing and where you come into it is half the point of naming it.</p>
+
+            <p>I suspect a fair bit of my job as a designer from here will come down to staying close enough to the people I work with to recognise when a different approach would help. On this project, that meant being there for the first prompt, getting a working version into stores and opening Figma when we had something worth bringing back into it. On the next one, I might start in Figma. Depends what we’re cooking.</p>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; Denby Serrao-Arnot</p>
+      <div class="footer-links">
+        <a href="mailto:hello@denby.design">hello@denby.design</a>
+        <a href="https://www.linkedin.com/in/denby-sa" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../site.js"></script>
+</body>
+</html>
