@@ -6,7 +6,15 @@
     <atom:link href="https://denby.design/rss.xml" rel="self" type="application/rss+xml" />
     <description>Thoughts on UX, digital design, tech trends, and more from Denby Serrao-Arnot.</description>
     <language>en-au</language>
-    <lastBuildDate>Thu, 20 Aug 2026 00:00:00 +1000</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 00:00:00 +1100</lastBuildDate>
+    <item>
+      <title>Reverse Sear Web Design</title>
+      <link>https://denby.design/posts/reverse-sear-web-design.html</link>
+      <guid>https://denby.design/posts/reverse-sear-web-design.html</guid>
+      <pubDate>Tue, 24 Nov 2026 00:00:00 +1100</pubDate>
+      <category>Design &amp; AI</category>
+      <description>A two-hour React prototype, early feedback from store teams, and why Figma came after launch.</description>
+    </item>
     <item>
       <title>Reliance on an engine that runs in the cloud</title>
       <link>https://denby.design/posts/reliance-on-an-engine-that-runs-in-the-cloud.html</link>
